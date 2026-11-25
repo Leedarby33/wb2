@@ -886,7 +886,7 @@ function stageOptions(){
   return S.stages.map(function(s,i){return '<option value="'+s.id+'"'+(s.id===S.activeStage?' selected':'')+'>'+esc(s.label)+(i===0?'（最早起点）':'')+'</option>';}).join('');
 }
 function setActiveStage(id){S.activeStage=id;save();renderAll();toast('已切换视角');}
-function showStartForm(){const f=$id('startForm');f.style.display=f.style.display==='none'?'block':'none';if(f.style.display==='block'){$id('startDate').value=localTodayStr();const c=curVals();$id('startW').value=c.weight!=null?c.weight:'';}}
+function showStartForm(){const f=$id('startForm');f.style.display=f.style.display==='none'?'block':'none';if(f.style.display==='block'){$id('startDate').value=localTodayStr();const c=curVals();$id('startW').value=c.weight!=null?c.weight:'';$id('startBf').value=c.bf!=null?c.bf:'';$id('startWaist').value=c.waist!=null?c.waist:'';$id('startFfm').value='';}}
 function showMileForm(){const f=$id('mileForm');f.style.display=f.style.display==='none'?'block':'none';if(f.style.display==='block')$id('mileDate').value=localTodayStr();}
 function lastSnap(){const c=curVals();return {weight:c.weight,bf:c.bf,waist:c.waist,ffm:c.ffm};}
 function confirmStart(){
@@ -894,7 +894,11 @@ function confirmStart(){
   const w=n2($id('startW').value);
   if(w==null){toast('填一个起点体重');return;}
   const snap=lastSnap();snap.weight=w;
-  if(snap.bf!=null&&snap.ffm==null)snap.ffm=+(w*(1-snap.bf/100)).toFixed(1);
+  const bf=n2($id('startBf').value),waist=n2($id('startWaist').value),ffm=n2($id('startFfm').value);
+  if(bf!=null)snap.bf=bf;
+  if(waist!=null)snap.waist=waist;
+  if(ffm!=null)snap.ffm=ffm;
+  else if(snap.bf!=null)snap.ffm=+(w*(1-snap.bf/100)).toFixed(1);
   const num=S.stages.length+1;
   const st={id:uid(),date:d,label:'阶段'+['一','二','三','四','五','六','七','八'][num-1]+' · '+md(d)+' 重新出发',snap:snap};
   S.stages.push(st);S.activeStage=st.id;save();renderAll();
@@ -927,8 +931,9 @@ function renderToday(){
     '<div class="btnrow"><button class="btn pri sm" onclick="showStartForm()">设为起点</button><button class="btn sm" onclick="showMileForm()">设为里程碑</button></div>'+
     '<div id="startForm" style="display:none;margin-top:12px;background:var(--card);border-radius:10px;padding:13px">'+
       '<div class="lbl">新起点 · 只是加一个锚点，历史一条都不会丢</div>'+
-      '<div class="grid2"><div><span class="lbl">日期</span><input type="date" class="inp" id="startDate"></div><div><span class="lbl">当时体重 kg</span><input type="number" step="0.1" class="inp" id="startW" placeholder="例 79.0"></div></div>'+
-      '<div class="note" style="margin:8px 0">体脂 / 腰围 / 去脂自动取最近一次体测，不用填。</div>'+
+      '<div class="grid3"><div><span class="lbl">日期</span><input type="date" class="inp" id="startDate"></div><div><span class="lbl">体重 kg</span><input type="number" step="0.1" class="inp" id="startW" placeholder="79.0"></div><div><span class="lbl">体脂 %</span><input type="number" step="0.1" class="inp" id="startBf" placeholder="27.0"></div></div>'+
+      '<div class="grid2" style="margin-top:8px"><div><span class="lbl">腰围 cm</span><input type="number" step="0.1" class="inp" id="startWaist" placeholder="86"></div><div><span class="lbl">去脂（可空，自动算）</span><input type="number" step="0.1" class="inp" id="startFfm" placeholder="自动"></div></div>'+
+      '<div class="note" style="margin:8px 0">已预填最近一次，按当天实测改。这里是这次减脂的基准，尽量准。</div>'+
       '<button class="btn pri sm" onclick="confirmStart()">确认 · 从这天重新起算</button></div>'+
     '<div id="mileForm" style="display:none;margin-top:12px;background:var(--card);border-radius:10px;padding:13px">'+
       '<div class="lbl">里程碑 · 当时的数据会自动存一张快照</div>'+

@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#f5f5f7">
+<meta name="theme-color" content="#4B5BFF">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <title>减脂二阶段 · 工作台</title>
 <script>
-(function(){var VER='20261125a';try{var s=sessionStorage.getItem('_wb2_ver');if(s&&s!==VER){sessionStorage.removeItem('_wb2_ver');location.reload(true);return;}sessionStorage.setItem('_wb2_ver',VER);}catch(e){}})();
+(function(){var VER='20261125b';try{var s=sessionStorage.getItem('_wb2_ver');if(s&&s!==VER){sessionStorage.removeItem('_wb2_ver');location.reload(true);return;}sessionStorage.setItem('_wb2_ver',VER);}catch(e){}})();
 </script>
 <style>
 
@@ -157,6 +157,59 @@ textarea.inp{height:60px;resize:vertical}
 .trainTbl th:nth-child(2){width:30%}
 .trainTbl th:nth-child(3){width:24%}
 .tbl td{word-break:break-word}
+
+/* ===== 活力配色 v2 ===== */
+:root{--bg:#F5F6FB;--card:#fff;--inset:#EDEFF7;--text:#1B1D2E;--text-2:#626684;--text-3:#9A9CB5;--blue:#4B5BFF;--green:#12C98C;--orange:#FF7A29;--red:#FF4D6D;--purple:#9B5CFF;--pink:#FF5C8A;--cyan:#00B8D9;--bdr:rgba(75,91,255,.10);--bdr2:rgba(75,91,255,.20)}
+body{background:radial-gradient(900px 400px at 8% -10%,rgba(123,92,255,.22),transparent 70%),radial-gradient(760px 340px at 98% -2%,rgba(255,92,138,.16),transparent 70%),#F5F6FB!important}
+.header{background:linear-gradient(112deg,#4B5BFF 0%,#7B5CFF 52%,#FF5C8A 100%);border-bottom:none;box-shadow:0 4px 18px rgba(75,91,255,.24)}
+.header .header-title{color:#fff!important;font-weight:700}
+.header .header-sub,.header .header-date{color:rgba(255,255,255,.88)!important}
+.header .avatar{background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.55);box-shadow:none}
+.main-tabs{background:rgba(246,247,252,.94);border-bottom:none}
+.main-tab{font-weight:600}
+.main-tab.active{background:linear-gradient(135deg,#4B5BFF,#7B5CFF);color:#fff;border-color:transparent;box-shadow:0 3px 10px rgba(75,91,255,.32)}
+.sub-tab.active{color:var(--blue);border-color:rgba(75,91,255,.25);background:#fff;box-shadow:0 2px 8px rgba(75,91,255,.10)}
+.card{border-color:rgba(75,91,255,.10);box-shadow:0 5px 18px rgba(40,48,100,.055)}
+.card-title::before{content:'';display:inline-block;width:4px;height:15px;flex-shrink:0;border-radius:3px;background:linear-gradient(180deg,var(--blue),var(--pink));margin-right:3px}
+.hero{background:linear-gradient(135deg,#4B5BFF 0%,#7B5CFF 56%,#B45CFF 100%)!important;border:1px solid rgba(255,255,255,.25)!important;color:#fff;box-shadow:0 10px 28px rgba(75,91,255,.28)}
+.hero .sub{color:rgba(255,255,255,.82)!important}
+.hero>.kv,.hero>.kv span{color:rgba(255,255,255,.9)}
+.gap-good{color:var(--green)}
+.gap-bad{color:var(--orange)}
+.hero .gap-good{color:#8CFFCF!important}
+.hero .gap-bad{color:#FFCF9A!important}
+.hero>.kv b{color:#fff}
+.hero>.pbar{background:rgba(255,255,255,.24)}
+.hero>.pbar>i{background:linear-gradient(90deg,#FFE259,#FFA62B,#FF5C8A)}
+.hero>.hr{background:rgba(255,255,255,.24)}
+.hero>.btnrow>.btn.pri{background:#fff;color:#4B5BFF;border-color:#fff;box-shadow:0 3px 10px rgba(20,20,60,.14)}
+.hero>.btnrow>.btn:not(.pri){background:rgba(255,255,255,.20);color:#fff;border-color:rgba(255,255,255,.48)}
+.hero .lbl{color:rgba(255,255,255,.9)!important}
+.hero #startForm .lbl,.hero #mileForm .lbl{color:var(--text-3)!important}
+.hero #startForm .note,.hero #mileForm .note{color:var(--text-3)}
+.hero #startForm .btn.pri,.hero #mileForm .btn.pri{background:var(--blue);color:#fff;border-color:var(--blue)}
+.hero input.inp,.hero select.inp{background:#fff!important;color:#1B1D2E!important;border-color:rgba(75,91,255,.28)!important}
+.pbar>i{background:linear-gradient(90deg,#00B8D9,#4B5BFF,#FF5C8A)}
+.btn.pri{background:linear-gradient(135deg,#4B5BFF,#7B5CFF);border-color:transparent;box-shadow:0 4px 12px rgba(75,91,255,.26)}
+.btn.on{background:var(--green);border-color:var(--green)}
+.chip.todo{background:rgba(255,122,41,.16);color:#C25A10}
+.chip.done{background:rgba(18,201,140,.17);color:#078C60}
+.pill{background:linear-gradient(135deg,rgba(75,91,255,.15),rgba(155,92,255,.15));color:#5B4BFF}
+.mile{border-left-color:var(--purple);background:linear-gradient(100deg,rgba(155,92,255,.07),rgba(255,92,138,.05))}
+.seg>div.on{color:var(--blue);box-shadow:0 2px 8px rgba(75,91,255,.12)}
+.achv{background:linear-gradient(120deg,#FFF1E4,#FFE7F0 58%,#EFE9FF);border-color:rgba(255,122,41,.22)}
+.achv .big{color:var(--orange)}
+.weekHero{background:linear-gradient(135deg,rgba(75,91,255,.10),rgba(255,92,138,.12));border-color:rgba(75,91,255,.22)}
+.weekHero .big{color:var(--blue)}
+.wcmp{margin-top:10px}
+.wrow{display:flex;align-items:center;gap:9px;margin:5px 0;font-size:10.5px;color:var(--text-3)}
+.wrow>span{width:28px;flex-shrink:0}
+.wrow>i{display:block;height:9px;border-radius:5px;min-width:2px;transition:width .3s}
+.wkline{padding:9px 0;border-bottom:1px solid var(--bdr)}
+.wkline:last-child{border-bottom:none}
+.wkline.empty{padding:6px 0;opacity:.8}
+.wbar{height:7px;background:var(--inset);border-radius:5px;overflow:hidden;margin:6px 0 4px}
+.wbar>i{display:block;height:100%;border-radius:5px}
 </style>
 </head>
 <body>
@@ -763,7 +816,7 @@ function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'
 function localTodayStr(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
 function toast(msg){
   let el=$id('wbToast');
-  if(!el){el=document.createElement('div');el.id='wbToast';el.style.cssText='position:fixed;top:13%;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.82);color:#fff;padding:11px 20px;border-radius:11px;font-size:13px;z-index:9999;pointer-events:none;transition:opacity .35s;text-align:center;max-width:80vw';document.body.appendChild(el);}
+  if(!el){el=document.createElement('div');el.id='wbToast';el.style.cssText='position:fixed;bottom:86px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.82);color:#fff;padding:11px 20px;border-radius:11px;font-size:13px;z-index:9999;pointer-events:none;transition:opacity .35s;text-align:center;max-width:80vw';document.body.appendChild(el);}
   el.textContent=msg;el.style.opacity='1';clearTimeout(el._t);el._t=setTimeout(function(){el.style.opacity='0';},1700);
 }
 function dayDiff(a,b){return Math.round((new Date(b+'T00:00:00')-new Date(a+'T00:00:00'))/86400000);}
@@ -789,7 +842,7 @@ const PLAN=[
    ['俯身侧平举 · 后束','3 × 15','7.5kg/手','腰背挺直，肩胛往中间夹'],
    ['仰卧臂屈伸 · 三头','3 × 10-12','7.5kg/手','躺多功能凳，大臂不动，下放 2 秒'],
    ['哑铃弯举 · 二头','3 × 12-15','7.5kg/手','大臂夹紧，下放 2 秒'],
-   ['死虫式 · 护腰','3 × 8/侧','自重','腰全程贴地，正常呼吸不憋气']]},
+   ['死虫式 · 护腰','3 × 8/侧','自重','腰全程贴地，别塌腰']]},
  {key:'pull',day:6,label:'拉 · 周六',focus:'背 · 引体 · 后束 · 腹',warm:'小碎步 1 分钟 → 肩/肘绕环 1 分钟 → 轻重量划船 ×12',
   items:[
    ['部分幅度引体 + 离心 · 主项','3 × 5','自重','1/2 行程连拉 4 次，第 5 次 5 秒慢放到手臂伸直；组间 120 秒'],
@@ -801,7 +854,7 @@ const PLAN=[
  {key:'leg',day:0,label:'腿 · 周日',focus:'臀 · 后链 · 护腰核心',warm:'小碎步 1 分钟 → 髋/踝画圈 1 分钟 → 徒手分腿蹲 5 次',
   items:[
    ['保加利亚分腿蹲 · 主项','4 × 10/侧','7.5-12.5kg/手','后脚搭凳、前脚多迈一步、躯干直立，组间 90 秒'],
-   ['单腿硬拉 · 扶墙版','3 × 10/侧','7.5-12.5kg','骨盆不歪，大腿后侧酸＝到位；全程呼气别憋气'],
+   ['单腿硬拉 · 扶墙版','3 × 10/侧','7.5-12.5kg','骨盆不歪，大腿后侧酸＝到位'],
    ['单腿臀桥','3 × 10/侧','自重','顶髋时夹臀不顶腰，慢放 2 秒'],
    ['自重深蹲 / 箭步蹲','3 × 15','自重','补容量，不追求维度'],
    ['麦吉尔卷腹 · 护腰','3 × 8/侧','自重','腰贴地，不卷脖子']]}
@@ -883,7 +936,7 @@ function fatLabel(p){return p>=70?'保肌良好':p>=50?'肌肉流失偏多':'需
 
 /* ===================== 阶段 / 里程碑 ===================== */
 function stageOptions(){
-  return S.stages.map(function(s,i){return '<option value="'+s.id+'"'+(s.id===S.activeStage?' selected':'')+'>'+esc(s.label)+(i===0?'（最早起点）':'')+'</option>';}).join('');
+  return S.stages.map(function(s,i){return '<option value="'+s.id+'"'+(s.id===S.activeStage?' selected':'')+'>'+esc(s.label)+(i===0?'（最早起点）':'')+(s.id===S.activeStage?' · 当前':'')+'</option>';}).join('');
 }
 function setActiveStage(id){S.activeStage=id;save();renderAll();toast('已切换视角');}
 function showStartForm(){const f=$id('startForm');f.style.display=f.style.display==='none'?'block':'none';if(f.style.display==='block'){$id('startDate').value=localTodayStr();const c=curVals();$id('startW').value=c.weight!=null?c.weight:'';$id('startBf').value=c.bf!=null?c.bf:'';$id('startWaist').value=c.waist!=null?c.waist:'';$id('startFfm').value='';}}
@@ -917,32 +970,32 @@ function renderToday(){
   const v=calcView(),today=localTodayStr(),dow=new Date().getDay();
   /* --- 阶段卡 --- */
   let h='<div class="card hero"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">'+
-    '<div><div class="sub">当前视角</div><div style="font-size:15px;font-weight:700;margin-top:2px">'+esc(v.st.label)+'</div></div>'+
-    '<div style="text-align:right"><div class="big mono">Day '+v.day+'</div><div class="sub">'+v.st.date+'</div></div></div>'+
+    '<div><div class="sub">当前阶段 · 第 '+(S.stages.indexOf(v.st)+1)+' / '+S.stages.length+' 个起点</div><div style="font-size:15px;font-weight:700;margin-top:2px">'+esc(v.st.label)+'</div></div>'+
+    '<div style="text-align:right"><div class="big mono">Day '+v.day+'</div><div class="sub">'+v.st.date+' 起</div></div></div>'+
     '<div class="pbar"><i style="width:'+v.pct.toFixed(1)+'%"></i></div>'+
     '<div class="kv"><span>起点 → 目标</span><b class="mono">'+f1(v.st.snap.weight)+' → '+GOALS.weight+' kg</b></div>'+
     '<div class="kv"><span>计划线今天</span><b class="mono">'+f1(v.planW)+' kg</b></div>'+
     '<div class="kv"><span>实际 · 最近一次</span><b class="mono">'+(v.curW!=null?f1(v.curW)+' kg':'未录入')+'</b></div>'+
-    (v.gap!=null?'<div class="kv"><span>与计划线</span><b class="mono" style="color:'+(v.gap<=0.05?'var(--green)':'var(--orange)')+'">'+(Math.abs(v.gap)<0.05?'持平':(v.gap<0?'领先 ':'落后 ')+Math.abs(v.gap).toFixed(1)+' kg')+'</b></div>':'')+
+    (v.gap!=null?'<div class="kv"><span>与计划线</span><b class="mono '+(v.gap<=0.05?'gap-good':'gap-bad')+'">'+(Math.abs(v.gap)<0.05?'持平':(v.gap<0?'领先 ':'落后 ')+Math.abs(v.gap).toFixed(1)+' kg')+'</b></div>':'')+
     '<div class="kv"><span>已减 / 还差</span><b class="mono">'+f1(v.lost)+' / '+f1(v.need)+' kg</b></div>'+
     (v.daysLeft!=null?'<div class="kv"><span>按 0.4kg/周</span><b class="mono">'+v.daysLeft+' 天 · '+v.eta.replace(/-/g,'/')+'</b></div>':'')+
     '<div class="hr"></div>'+
-    '<div style="margin-bottom:10px"><span class="lbl">视角 · 随时切回任意起点</span><select class="inp" style="width:100%;padding:8px 10px;font-size:12.5px" onchange="setActiveStage(this.value)">'+stageOptions()+'</select></div>'+
+    '<div style="margin-bottom:10px"><span class="lbl">切换起点 · 每个阶段都留着</span><select class="inp" style="width:100%;padding:8px 10px;font-size:12.5px" onchange="setActiveStage(this.value)">'+stageOptions()+'</select></div>'+
     '<div class="btnrow"><button class="btn pri sm" onclick="showStartForm()">设为起点</button><button class="btn sm" onclick="showMileForm()">设为里程碑</button></div>'+
-    '<div id="startForm" style="display:none;margin-top:12px;background:var(--card);border-radius:10px;padding:13px">'+
-      '<div class="lbl">新起点 · 只是加一个锚点，历史一条都不会丢</div>'+
+    '<div id="startForm" style="display:none;margin-top:12px;background:#fff;border-radius:10px;padding:13px">'+
+      '<div class="lbl">设完立刻进入下一个阶段</div>'+
       '<div class="grid3"><div><span class="lbl">日期</span><input type="date" class="inp" id="startDate"></div><div><span class="lbl">体重 kg</span><input type="number" step="0.1" class="inp" id="startW" placeholder="79.0"></div><div><span class="lbl">体脂 %</span><input type="number" step="0.1" class="inp" id="startBf" placeholder="27.0"></div></div>'+
       '<div class="grid2" style="margin-top:8px"><div><span class="lbl">腰围 cm</span><input type="number" step="0.1" class="inp" id="startWaist" placeholder="86"></div><div><span class="lbl">去脂（可空，自动算）</span><input type="number" step="0.1" class="inp" id="startFfm" placeholder="自动"></div></div>'+
-      '<div class="note" style="margin:8px 0">已预填最近一次，按当天实测改。这里是这次减脂的基准，尽量准。</div>'+
+      '<div class="note" style="margin:8px 0">Day 1 从这天算，旧阶段不删、上面随时切回。已预填最近一次，按当天实测改。</div>'+
       '<button class="btn pri sm" onclick="confirmStart()">确认 · 从这天重新起算</button></div>'+
-    '<div id="mileForm" style="display:none;margin-top:12px;background:var(--card);border-radius:10px;padding:13px">'+
+    '<div id="mileForm" style="display:none;margin-top:12px;background:#fff;border-radius:10px;padding:13px">'+
       '<div class="lbl">里程碑 · 当时的数据会自动存一张快照</div>'+
       '<div class="grid2"><div><span class="lbl">日期</span><input type="date" class="inp" id="mileDate"></div><div><span class="lbl">一句话</span><input type="text" class="inp" id="mileNote" placeholder="破 75 / 第一次全程引体"></div></div>'+
       '<button class="btn pri sm" style="margin-top:10px" onclick="confirmMile()">记下来</button></div>'+
     '</div>';
   /* 阶段一成就条 */
   const dw=PHASE1.w0-PHASE1.w1,df=PHASE1.w0*PHASE1.bf0/100-PHASE1.w1*PHASE1.bf1/100;
-  h+='<div class="card" style="padding:14px 18px"><div class="sub">阶段一 · '+md(PHASE1.start)+' → '+md(PHASE1.end)+' · 一直留着</div>'+
+  h+='<div class="card achv" style="padding:14px 18px"><div class="sub">阶段一 · '+md(PHASE1.start)+' → '+md(PHASE1.end)+' · 一直留着</div>'+
      '<div style="display:flex;align-items:baseline;gap:10px;margin-top:6px"><span class="big mono" style="font-size:24px">−'+dw.toFixed(1)+' kg</span><span class="mini">其中脂肪 '+df.toFixed(1)+' kg（'+Math.round(df/dw*100)+'%）</span></div>'+
      '<div class="tinyline" style="margin-top:4px">'+f1(PHASE1.w0)+' → '+f1(PHASE1.w1)+' kg · 腰围 '+PHASE1.waist0+' → '+PHASE1.waist1+' cm</div></div>';
   $id('stageCard').innerHTML=h;
@@ -965,7 +1018,8 @@ function renderToday(){
 
   /* --- 今日待填 --- */
   const hasBody=S.body.some(function(r){return r.date===today;});
-  const hasMeal=S.meals.some(function(r){return r.date===today;});
+  const hasMeal=S.meals.some(function(r){return r.date===today&&r.cal!=null&&r.cal!=='';});
+  const wks0=weekList(),cw0=wks0[0],pv0=wks0[1],ca0=cw0?weekAvg(cw0):null,pb0=pv0?weekAvg(pv0):null;
   const kglDone=S.kgl===today;
   const lastB=bodySorted().length?bodySorted()[bodySorted().length-1].date:null;
   const lastT=S.train.length?S.train.slice().sort(function(a,b){return a.date.localeCompare(b.date);}).slice(-1)[0].date:null;
@@ -976,13 +1030,13 @@ function renderToday(){
     '<span class="chip '+(kglDone?'done':'todo')+'" onclick="markKgl()">'+(kglDone?'✓':'○')+' 凯格尔</span>'+
     '<span class="chip '+(trainDone?'done':'todo')+'">'+(trainDone?'✓':(p?'○':'—'))+' 正式组</span></div>'+
     '<div class="hr"></div><div class="kv"><span>距上次称重</span><b class="mono">'+(lastB?dayDiff(lastB,today)+' 天':'—')+'</b></div>'+
-    '<div class="kv"><span>距上次正式组</span><b class="mono">'+(lastT?dayDiff(lastT,today)+' 天':'—')+'</b></div></div>';
+    '<div class="kv"><span>距上次正式组</span><b class="mono">'+(lastT?dayDiff(lastT,today)+' 天':'—')+'</b></div>'+
+    '<div class="kv"><span>本周日均热量</span><b class="mono">'+(ca0!=null?Math.round(ca0).toLocaleString()+' kcal'+(pb0!=null?' · '+(ca0>pb0?'↑':'↓')+Math.abs(Math.round(ca0-pb0)):''):'—')+'</b></div></div>';
   $id('todayTodo').innerHTML=d;
 
   /* --- 凯格尔 --- */
   $id('kglCard').innerHTML='<div class="card"><div class="card-title">凯格尔 · 每天</div>'+
     '<div class="mini">3 组 × 10 次，慢收 3-5 秒 / 放松 3-5 秒，掺几次快速收放。挂在刷牙后或洗澡前，不挑时间。</div>'+
-    '<div class="note" style="margin-top:8px;color:var(--orange)">发力时正常呼气，别憋气鼓腹；不用腹肌和臀部代偿，别用排尿中断当训练。</div>'+
     '<div class="btnrow" style="margin-top:11px">'+(kglDone?'<button class="btn on sm">今天已做</button>':'<button class="btn pri sm" onclick="markKgl()">今天做了</button>')+'</div></div>';
 
   /* --- 里程碑 --- */
@@ -1043,8 +1097,7 @@ function renderTrain(){
      '<b>单杠系</b>：悬垂举膝 ×8-10 · 悬垂 20 秒 · 拉一半 ×3 · 跳上慢放 ×1<br>'+
      '<b>地板系</b>：俯卧撑 ×6-8 · 死虫式 ×8/侧<br>'+
      '<b>站着做</b>：站姿提膝 ×20 · 自重深蹲 ×15<br>'+
-     '<span style="color:var(--orange)">不力竭，做到一半就停。真空腹要屏气，耳朵恢复期先跳过。</span></div></div>';
-  h+='<div class="card"><div class="card-title">耳朵这条硬线</div><div class="mini">全程不憋气，发力呼气、还原吸气；不做头低于心脏的动作。出现耳鸣、听力波动、眩晕立刻停。</div></div>';
+     '<span style="color:var(--orange)">不力竭，做到一半就停。</span></div></div>';
   $id('trainArea').innerHTML=h;
 }
 function markTrain(key){
@@ -1058,38 +1111,82 @@ function markTrain(key){
 function markKgl(){S.kgl=localTodayStr();save();renderAll();toast('已记下');}
 
 /* ===================== 渲染：饮食 ===================== */
+function weekMonday(d){const dt=new Date(d+'T00:00:00');const dow=dt.getDay()||7;return addDays(d,-dow+1);}
+function mealWeeks(){
+  const map={};
+  S.meals.forEach(function(r){
+    const cal=n2(r.cal);if(cal==null)return;
+    const k=weekMonday(r.date);
+    if(!map[k])map[k]={start:k,days:0,cal:0,p:0,carb:0,pDays:0,cDays:0};
+    const o=map[k];o.days++;o.cal+=cal;
+    const pr=n2(r.p),cb=n2(r.carb);
+    if(pr!=null){o.p+=pr;o.pDays++;}
+    if(cb!=null){o.carb+=cb;o.cDays++;}
+  });
+  return map;
+}
+function weekList(){
+  const map=mealWeeks(),keys=Object.keys(map);
+  if(!keys.length)return [];
+  const first=keys.slice().sort()[0];let cur=weekMonday(localTodayStr());const out=[];
+  while(cur>=first&&out.length<26){out.push(map[cur]||{start:cur,days:0,cal:0,p:0,carb:0,pDays:0,cDays:0});cur=addDays(cur,-7);}
+  return out;
+}
+function weekAvg(o){return o&&o.days?o.cal/o.days:null;}
 function renderDiet(){
   const today=localTodayStr();
-  const cur=S.meals.find(function(r){return r.date===today;})||{date:today,b:'',l:'',d:'',s:'',cal:'',p:''};
-  let h='<div class="card"><div class="card-title">今天吃了什么 <span class="pill">选填</span></div>'+
-    '<div class="grid2"><div><span class="lbl">日期</span><input type="date" class="inp" id="mealDate" value="'+today+'"></div><div></div></div>'+
-    '<div style="margin-top:10px"><span class="lbl">早餐</span><input type="text" class="inp" id="mealB" placeholder="4蛋+燕麦+美式" value="'+esc(cur.b)+'"></div>'+
-    '<div style="margin-top:8px"><span class="lbl">午餐</span><input type="text" class="inp" id="mealL" placeholder="一句话就行" value="'+esc(cur.l)+'"></div>'+
-    '<div style="margin-top:8px"><span class="lbl">晚餐</span><input type="text" class="inp" id="mealD" placeholder="一句话就行" value="'+esc(cur.d)+'"></div>'+
-    '<div style="margin-top:8px"><span class="lbl">加餐 / 补剂</span><input type="text" class="inp" id="mealS" placeholder="蛋白粉 2 勺" value="'+esc(cur.s)+'"></div>'+
-    '<div class="grid2" style="margin-top:8px"><div><span class="lbl">热量 kcal（可空）</span><input type="number" class="inp" id="mealCal" value="'+esc(cur.cal)+'"></div>'+
-    '<div><span class="lbl">蛋白 g（可空）</span><input type="number" class="inp" id="mealP" value="'+esc(cur.p)+'"></div></div>'+
-    '<button class="btn pri sm" style="margin-top:12px" onclick="saveMeal()">保存今天</button></div>';
-  const recent=S.meals.slice().sort(function(a,b){return b.date.localeCompare(a.date);}).slice(0,7);
-  const withP=S.meals.filter(function(r){return r.p!=null&&r.p!=='';}).slice(-7);
-  h+='<div class="card"><div class="card-title">近 7 天</div>'+
-     '<div class="kv"><span>蛋白均值</span><b class="mono">'+(withP.length?(withP.reduce(function(s,r){return s+ +r.p;},0)/withP.length).toFixed(0)+' g':'—')+'</b></div>';
-  if(!recent.length)h+='<div class="note">阶段一饮食记录导入后会出现在下面。</div>';
-  recent.forEach(function(r){
-    h+='<div style="background:var(--inset);border-radius:9px;padding:10px 12px;margin-top:8px"><div style="display:flex;justify-content:space-between"><b style="font-size:12px">'+r.date+'</b>'+
-      '<span class="sub mono">'+(r.cal!=null&&r.cal!==''?r.cal+' kcal':'')+(r.p!=null&&r.p!==''?' · '+r.p+'g 蛋白':'')+'</span></div>'+
-      '<div class="tinyline" style="margin-top:4px;color:var(--text-2)">'+[r.b?'早 '+r.b:'',r.l?'午 '+r.l:'',r.d?'晚 '+r.d:'',r.s?'加 '+r.s:''].filter(Boolean).map(esc).join(' · ')+'</div></div>';
+  const cur=S.meals.find(function(r){return r.date===today;})||{date:today,cal:'',carb:'',p:''};
+  const wks=weekList(),cw=wks[0]||{start:weekMonday(today),days:0,cal:0,p:0,carb:0,pDays:0,cDays:0},pv=wks[1];
+  const a=weekAvg(cw),b=pv?weekAvg(pv):null,diff=(a!=null&&b!=null&&b>0)?a-b:null;
+  let h='<div class="card"><div class="card-title">今天 · 全天加总</div>'+
+    '<div class="grid3">'+
+      '<div><span class="lbl">热量 kcal</span><input type="number" class="inp" id="mealCal" placeholder="1800" value="'+esc(cur.cal)+'"></div>'+
+      '<div><span class="lbl">碳水 g</span><input type="number" class="inp" id="mealCarb" placeholder="150" value="'+esc(cur.carb)+'"></div>'+
+      '<div><span class="lbl">蛋白 g</span><input type="number" class="inp" id="mealP" placeholder="140" value="'+esc(cur.p)+'"></div>'+
+    '</div>'+
+    '<div style="display:flex;gap:8px;align-items:flex-end;margin-top:10px">'+
+      '<div style="width:148px;flex-shrink:0"><span class="lbl">日期</span><input type="date" class="inp" id="mealDate" value="'+today+'"></div>'+
+      '<button class="btn pri sm" style="flex:1;height:36px" onclick="saveMeal()">保存</button></div>'+
+    '</div>';
+
+  h+='<div class="card weekHero"><div class="card-title">本周热量 · '+md(cw.start)+' – '+md(addDays(cw.start,6))+'</div>'+
+    '<div style="display:flex;align-items:baseline;gap:8px"><span class="big mono" style="font-size:32px">'+(a!=null?Math.round(a).toLocaleString():'还没记')+'</span><span class="sub">'+(a!=null?'kcal / 天 · '+cw.days+' 天有记录':'本周 0 条 · 记一条就有对比')+'</span></div>'+
+    '<div class="kv"><span>本周合计</span><b class="mono">'+(cw.cal?Math.round(cw.cal).toLocaleString()+' kcal':'—')+'</b></div>'+
+    '<div class="kv"><span>上周日均</span><b class="mono">'+(b!=null?Math.round(b).toLocaleString()+' kcal':'—')+'</b></div>'+
+    (diff!=null?'<div class="kv"><span>比上周</span><b class="mono" style="color:'+(diff>0?'var(--orange)':'var(--green)')+'">'+
+      (Math.abs(diff)<1?'基本持平':(diff>0?'多吃了 ':'少吃了 ')+Math.abs(Math.round(diff))+' kcal / 天（'+(diff>0?'+':'−')+Math.abs(diff/b*100).toFixed(1)+'%）')+'</b></div>'
+     :'<div class="note" style="margin-top:6px">上周没记录，记满两周就能比了。</div>')+
+    (a!=null&&b!=null?'<div class="wcmp"><div class="wrow"><span>上周</span><i style="width:'+Math.min(100,b/Math.max(a,b)*100)+'%;background:#B9B9C4"></i></div>'+
+    '<div class="wrow"><span>本周</span><i style="width:'+Math.min(100,a/Math.max(a,b)*100)+'%;background:linear-gradient(90deg,var(--blue),var(--purple))"></i></div></div>'+
+    '<div class="note" style="margin-top:4px">按日均比，周中也能看；只算有记录的日子。</div>':'')+'</div>';
+
+  const mx=Math.max.apply(null,wks.map(function(o){return weekAvg(o)||0;}).concat([1]));
+  h+='<div class="card"><div class="card-title">每周汇总 · 一周一行</div>';
+  if(!wks.length)h+='<div class="note">导入阶段一数据后，这里会按周排好。</div>';
+  wks.forEach(function(o,i){
+    const av=weekAvg(o),pvv=i+1<wks.length?weekAvg(wks[i+1]):null;
+    const dd=(av!=null&&pvv!=null)?av-pvv:null;
+    if(av==null){
+      h+='<div class="wkline empty"><div style="display:flex;justify-content:space-between;align-items:baseline"><b class="mono" style="font-size:11.5px">'+md(o.start)+' – '+md(addDays(o.start,6))+(i===0?' <span class="pill">本周</span>':'')+'</b><span class="tinyline">未记录</span></div></div>';
+      return;
+    }
+    h+='<div class="wkline"><div style="display:flex;justify-content:space-between;align-items:baseline;gap:6px">'+
+      '<b class="mono" style="font-size:12px">'+md(o.start)+' – '+md(addDays(o.start,6))+(i===0?' <span class="pill">本周</span>':'')+'</b>'+
+      '<span class="mono" style="font-size:12.5px;font-weight:700;white-space:nowrap">'+(av!=null?Math.round(av).toLocaleString()+' kcal':'未记录')+'</span></div>'+
+      '<div class="wbar"><i style="width:'+(av!=null?Math.max(3,av/mx*100):0)+'%;background:'+(i===0?'linear-gradient(90deg,var(--blue),var(--purple))':'linear-gradient(90deg,#9AA6FF,#C6AEFF)')+'"></i></div>'+
+      '<div class="tinyline">合计 '+(o.cal?Math.round(o.cal).toLocaleString()+' kcal':'—')+' · '+o.days+' 天'+
+        (o.pDays?' · 蛋白 '+Math.round(o.p/o.pDays)+'g':'')+(o.cDays?' · 碳水 '+Math.round(o.carb/o.cDays)+'g':'')+
+        (dd!=null?' · <span style="color:'+(dd>0?'var(--orange)':'var(--green)')+'">'+(dd>0?'↑':'↓')+Math.abs(Math.round(dd))+' kcal/天</span>':'')+'</div></div>';
   });
   h+='</div>';
   $id('dietArea').innerHTML=h;
 }
 function saveMeal(){
   const d=$id('mealDate').value||localTodayStr();
-  const o={date:d,b:($id('mealB').value||'').trim(),l:($id('mealL').value||'').trim(),d:($id('mealD').value||'').trim(),s:($id('mealS').value||'').trim(),
-    cal:n2($id('mealCal').value),p:n2($id('mealP').value)};
+  const o={date:d,cal:n2($id('mealCal').value),carb:n2($id('mealCarb').value),p:n2($id('mealP').value)};
   const i=S.meals.findIndex(function(r){return r.date===d;});
-  if(i>=0)S.meals[i]=o;else S.meals.push(o);
-  save();renderAll();toast('饮食已记 '+md(d));
+  if(i>=0)S.meals[i]=Object.assign({},S.meals[i],o);else S.meals.push(o);
+  save();renderAll();toast('已记 '+md(d));
 }
 
 /* ===================== 渲染：体测 ===================== */

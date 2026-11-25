@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#f5f5f7">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>减脂二阶段 · 工作台</title>
+<script>
+(function(){var VER='20261125a';try{var s=sessionStorage.getItem('_wb2_ver');if(s&&s!==VER){sessionStorage.removeItem('_wb2_ver');location.reload(true);return;}sessionStorage.setItem('_wb2_ver',VER);}catch(e){}})();
+</script>
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{font-size:16px;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,'SF Pro Text','PingFang SC','Helvetica Neue',sans-serif;background:var(--bg);color:var(--text);line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+:root{--bg:#f5f5f7;--card:#ffffff;--inset:#eeeef0;--text:#1d1d1f;--text-2:#6e6e73;--text-3:#aeaeb2;--blue:#007AFF;--green:#34C759;--orange:#FF9500;--red:#FF3B30;--purple:#AF52DE;--yellow:#FFCC00;--radius:14px;--radius-sm:10px;--bdr:rgba(0,0,0,0.08);--bdr2:rgba(0,0,0,0.14)}
+.container{max-width:480px;margin:0 auto;padding:0 16px 80px}
+.header{position:sticky;top:0;z-index:100;background:rgba(245,245,247,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr);padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
+.header-left{display:flex;align-items:center;gap:10px}
+.avatar{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--orange),var(--red));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#fff}
+.header-title{font-size:15px;font-weight:600;color:var(--text)}
+.header-sub{font-size:11px;color:var(--text-2);margin-top:1px}
+.header-date{font-size:11px;color:var(--text-3);text-align:right}
+.main-tabs{position:sticky;top:56px;z-index:99;background:rgba(245,245,247,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;gap:6px;padding:10px 16px 8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;border-bottom:1px solid var(--bdr)}
+.main-tabs::-webkit-scrollbar{display:none}
+.main-tab{flex-shrink:0;padding:7px 16px;border-radius:20px;font-size:13px;font-weight:500;color:var(--text-2);background:transparent;border:1px solid transparent;transition:all 0.2s;white-space:nowrap;cursor:pointer}
+.main-tab.active{color:var(--text);background:var(--card);border-color:var(--bdr2)}
+.main-panel{display:none}
+.main-panel.active{display:block}
+.sub-tabs{display:flex;gap:6px;padding:12px 0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.sub-tabs::-webkit-scrollbar{display:none}
+.sub-tab{flex-shrink:0;padding:6px 14px;border-radius:20px;font-size:11px;font-weight:500;color:var(--text-2);background:transparent;border:1px solid transparent;transition:all 0.2s;white-space:nowrap;cursor:pointer}
+.sub-tab.active{color:var(--text);background:var(--card);border-color:var(--bdr2)}
+.sub-panel{display:none}
+.sub-panel.active{display:block;animation:fadeUp 0.3s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.card{background:var(--card);border-radius:var(--radius);padding:18px;margin-bottom:16px;border:1px solid var(--bdr)}
+.card-title{font-size:16px;font-weight:600;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:6px}
+.day-summary{background:var(--inset);border-radius:var(--radius-sm);padding:14px;margin-bottom:12px}
+.day-summary .row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.day-summary .row:last-child{margin-bottom:0}
+.day-summary .label{font-size:12px;color:var(--text-2)}
+.day-summary .val{font-size:16px;font-weight:700}
+.jige-chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.jige-chip{display:inline-block;font-size:10px;font-weight:600;padding:2px 7px;border-radius:10px;white-space:nowrap;line-height:1.5}
+.jige-chip.sanqi{background:rgba(255,204,0,0.25);color:#B8860B;border:1px solid rgba(255,204,0,0.4)}
+.jige-chip.dun{background:rgba(0,122,255,0.12);color:var(--blue);border:1px solid rgba(0,122,255,0.3)}
+.jige-chip.yunu{background:rgba(175,82,222,0.12);color:var(--purple);border:1px solid rgba(175,82,222,0.3)}
+.jige-chip.normal{background:rgba(52,199,89,0.12);color:var(--green);border:1px solid rgba(52,199,89,0.25)}
+.jige-count{font-size:10px;font-weight:700;padding:1px 6px;border-radius:8px;background:rgba(255,204,0,0.25);color:#B8860B;margin-left:4px}
+input[type="date"],input[type="number"],input[type="text"],select{background:var(--inset)!important;color:var(--text)!important;border:1px solid var(--bdr2)!important;font-family:inherit}
+input::placeholder{color:var(--text-3)}
+
+/* ===== 训练模块 ===== */
+.goal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.goal-item{background:var(--inset);border-radius:var(--radius-sm);padding:12px 14px}
+.goal-label{font-size:11px;color:var(--text-3);margin-bottom:2px}
+.goal-val{font-size:22px;font-weight:800;color:var(--text);line-height:1.2}
+.goal-val .u{font-size:12px;font-weight:500;color:var(--text-2);margin-left:2px}
+.goal-cur{font-size:11px;color:var(--text-2);margin-top:2px}
+.goal-cur b{color:var(--blue);font-weight:600}
+.seg{display:flex;background:var(--inset);border-radius:12px;padding:3px;gap:3px;margin:18px 0 14px}
+.seg-item{flex:1;text-align:center;padding:9px 0;border-radius:9px;cursor:pointer;user-select:none;font-size:14px;font-weight:500;color:var(--text-2);transition:all .18s}
+.seg-item.on{background:var(--card);color:var(--text);font-weight:700;box-shadow:0 1px 5px rgba(0,0,0,.12)}
+.supp-tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:8px;margin-left:6px;vertical-align:2px}
+.supp-item{display:flex;justify-content:space-between;align-items:baseline;padding:9px 2px;border-bottom:1px solid var(--bdr)}
+.supp-item:last-child{border-bottom:none}
+.supp-item .sn{font-size:13.5px;font-weight:600;color:var(--text)}
+.supp-item .sd{font-size:11px;color:var(--text-2);margin-top:2px}
+.supp-item .sr{font-size:11px;color:var(--text-3);text-align:right;flex-shrink:0;margin-left:12px;max-width:45%}
+.eta-bar{margin-top:12px;padding:10px 12px;background:rgba(0,122,255,0.07);border-radius:10px;font-size:11.5px;color:var(--text-2);line-height:1.7}
+.eta-bar b{color:var(--blue);font-weight:700}
+details.entry{background:var(--card);border:1px solid var(--bdr);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+details.entry>summary{list-style:none;cursor:pointer;padding:14px 18px;font-size:14px;font-weight:600;color:var(--text);display:flex;align-items:center;justify-content:space-between}
+details.entry>summary::-webkit-details-marker{display:none}
+details.entry>summary::after{content:'＋';font-size:15px;color:var(--text-3);font-weight:400}
+details.entry[open]>summary::after{content:'－'}
+details.entry>summary .hint{font-size:11px;font-weight:400;color:var(--text-3);margin-left:auto;margin-right:10px}
+.entry-body{padding:0 18px 16px;border-top:1px solid var(--bdr);padding-top:14px}
+.inp-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.inp-row label{font-size:12px;color:var(--text-2);width:76px;flex-shrink:0}
+.inp-row input{flex:1;padding:9px 11px;border-radius:8px;font-size:14px;outline:none;width:100%}
+.btn-save{width:100%;padding:10px;border:none;border-radius:9px;background:var(--blue);color:#fff;font-size:13px;font-weight:600;cursor:pointer;margin-top:2px}
+.recent-line{font-size:11px;color:var(--text-3);margin-top:10px;line-height:1.7}
+.recent-line b{color:var(--text-2);font-weight:600}
+
+.plan-card{background:var(--card);border-radius:var(--radius);padding:18px;margin-bottom:16px;border:1px solid var(--bdr);position:relative}
+.plan-card.today{border-color:var(--blue);box-shadow:0 0 0 2px rgba(0,122,255,0.10)}
+.plan-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4px}
+.plan-day{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:0.5px}
+.plan-name{font-size:17px;font-weight:700;color:var(--text);margin-top:1px}
+.plan-focus{font-size:11.5px;color:var(--text-3);margin-top:2px}
+.plan-dur{font-size:11px;color:var(--text-2);background:var(--inset);border-radius:10px;padding:3px 9px;white-space:nowrap;flex-shrink:0}
+.today-badge{position:absolute;top:-9px;right:14px;background:var(--blue);color:#fff;font-size:10px;font-weight:700;padding:2px 9px;border-radius:9px}
+.plan-sec{font-size:11px;font-weight:700;color:var(--text-3);margin:14px 0 8px;letter-spacing:0.4px}
+.lb-box{background:rgba(255,149,0,0.08);border-radius:10px;padding:10px 12px;margin-bottom:4px}
+.lb-item{display:flex;gap:8px;font-size:12px;color:var(--text-2);line-height:1.6;padding:3px 0}
+.lb-item .n{font-weight:600;color:var(--text);flex-shrink:0}
+.lb-item .s{color:var(--orange);font-weight:600;flex-shrink:0;font-size:11px}
+.act-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--bdr)}
+.act-item:last-child{border-bottom:none}
+.act-idx{width:20px;height:20px;border-radius:6px;background:var(--inset);color:var(--text-2);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.act-body{flex:1;min-width:0}
+.act-name{font-size:13.5px;font-weight:600;color:var(--text)}
+.act-spec{font-size:11.5px;color:var(--blue);font-weight:600;margin-top:1px}
+.act-tip{font-size:11px;color:var(--text-3);line-height:1.6;margin-top:3px}
+.plan-foot{font-size:11px;color:var(--text-3);line-height:1.7;margin-top:12px;padding-top:10px;border-top:1px dashed var(--bdr)}
+.warn-box{background:rgba(255,59,48,0.07);border-left:3px solid var(--red);border-radius:8px;padding:10px 12px;font-size:11.5px;color:var(--text-2);line-height:1.75;margin-top:12px}
+
+/* ===== 二阶段新增 ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:4px;padding:9px 14px;border-radius:10px;border:1px solid var(--bdr2);background:var(--card);color:var(--text);font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit}
+.btn.pri{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn.sm{padding:6px 10px;font-size:11.5px}
+.btn.on{background:var(--green);border-color:var(--green);color:#fff}
+.btn:active{opacity:.7}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap}
+.inp{width:100%;padding:9px 11px;border-radius:9px;border:1px solid var(--bdr2);background:var(--card);font-size:13px;color:var(--text);outline:none;font-family:inherit;box-sizing:border-box}
+.inp:focus{border-color:var(--blue)}
+textarea.inp{height:60px;resize:vertical}
+.lbl{font-size:11px;color:var(--text-3);margin-bottom:4px;display:block}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.pbar{height:9px;background:var(--inset);border-radius:6px;overflow:hidden;margin:10px 0}
+.pbar>i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--green));border-radius:6px}
+.kv{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;color:var(--text-2);margin:6px 0}
+.kv b{font-size:15px;color:var(--text);font-weight:700}
+.big{font-size:30px;font-weight:800;line-height:1.15;letter-spacing:-.5px}
+.sub{font-size:11px;color:var(--text-3)}
+.seg{display:flex;background:var(--inset);border-radius:10px;padding:3px;gap:2px;margin-bottom:14px}
+.seg>div{flex:1;text-align:center;padding:8px 4px;border-radius:8px;font-size:12.5px;font-weight:600;color:var(--text-2);cursor:pointer}
+.seg>div.on{background:var(--card);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.tbl{width:100%;border-collapse:collapse;font-size:12px}
+.tbl th{text-align:left;font-size:10.5px;color:var(--text-3);font-weight:600;padding:7px 6px;border-bottom:1px solid var(--bdr)}
+.tbl td{padding:9px 6px;border-bottom:1px solid var(--bdr);vertical-align:top;color:var(--text-2);line-height:1.5}
+.tbl td.nm{color:var(--text);font-weight:600}
+.chip{display:inline-block;font-size:10.5px;padding:4px 10px;border-radius:10px;background:var(--inset);color:var(--text-2);font-weight:600}
+.chip.todo{background:rgba(255,149,0,.14);color:#C77700}
+.chip.done{background:rgba(52,199,89,.15);color:#248A3D}
+.mile{border-left:3px solid var(--yellow);background:var(--inset);border-radius:9px;padding:11px 13px;margin-bottom:9px}
+.note{font-size:11px;color:var(--text-3);line-height:1.7}
+.hr{height:1px;background:var(--bdr);margin:14px 0}
+.fold{cursor:pointer;font-size:12px;color:var(--blue);font-weight:600;padding:6px 0}
+.fbar{display:flex;height:12px;border-radius:6px;overflow:hidden;margin:8px 0}
+.fbar>i{display:block;height:100%}
+.mono{font-variant-numeric:tabular-nums}
+.pill{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:9px;background:rgba(0,122,255,.12);color:var(--blue)}
+.hero{background:linear-gradient(135deg,rgba(0,122,255,.09),rgba(52,199,89,.09));border:1px solid rgba(0,122,255,.18)}
+.mini{font-size:11.5px;color:var(--text-2);line-height:1.75}
+.tinyline{font-size:10.5px;color:var(--text-3);line-height:1.6}
+.main-tab{padding:7px 9px;font-size:12px}
+.trainTbl{table-layout:fixed}
+.trainTbl th:first-child,.trainTbl td.nm{width:46%;padding-right:10px}
+.trainTbl th:nth-child(2){width:30%}
+.trainTbl th:nth-child(3){width:24%}
+.tbl td{word-break:break-word}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="header-left">
+      <div class="avatar">Ⅱ</div>
+      <div><div class="header-title">减脂二阶段</div><div class="header-sub" id="headerSub">69kg · 19% · 79cm</div></div>
+    </div>
+    <div class="header-date" id="headerDate"></div>
+  </div>
+
+  <div class="main-tabs">
+    <div class="main-tab active" data-main="today" onclick="switchMain('today')">今日</div>
+    <div class="main-tab" data-main="train" onclick="switchMain('train')">训练</div>
+    <div class="main-tab" data-main="diet" onclick="switchMain('diet')">饮食</div>
+    <div class="main-tab" data-main="body" onclick="switchMain('body')">体测</div>
+    <div class="main-tab" data-main="analysis" onclick="switchMain('analysis')">分析</div>
+    <div class="main-tab" data-main="paipan" onclick="switchMain('paipan')">排盘</div>
+    <div class="main-tab" data-main="life" onclick="switchMain('life')">生活</div>
+  </div>
+
+  <div class="main-panel active" id="panel-today">
+    <div id="stageCard"></div>
+    <div id="todayPlan"></div>
+    <div id="todayTodo"></div>
+    <div id="kglCard"></div>
+    <div id="mileCard"></div>
+  </div>
+
+  <div class="main-panel" id="panel-train">
+    <div id="trainArea"></div>
+  </div>
+
+  <div class="main-panel" id="panel-diet">
+    <div id="dietArea"></div>
+  </div>
+
+  <div class="main-panel" id="panel-body">
+    <div id="bodyArea"></div>
+  </div>
+
+  <div class="main-panel" id="panel-analysis">
+    <div id="analysisArea"></div>
+  </div>
+
+  <div class="main-panel" id="panel-paipan">
+    <div class="sub-tabs">
+      <div class="sub-tab active" data-sub="pz-recommend" onclick="switchSub('pz-recommend')">推荐</div>
+      <div class="sub-tab" data-sub="pz-detail" onclick="switchSub('pz-detail')">吉时表</div>
+      <div class="sub-tab" data-sub="pz-info" onclick="switchSub('pz-info')">排盘信息</div>
+    </div>
+    <div class="sub-panel active" id="sub-pz-recommend"></div>
+    <div class="sub-panel" id="sub-pz-detail"></div>
+    <div class="sub-panel" id="sub-pz-info"></div>
+  </div>
+
+  <div class="main-panel" id="panel-life">
+    <div id="wishArea"></div>
+    <div id="suppArea"></div>
+  </div>
+</div>
+
+<input type="file" id="importFile" accept="application/json,.json" style="display:none" onchange="doImport(event)">
+<script>
+// ========== 奇门遁甲动态排盘引擎 ==========
+// 账号创建时间
+const PZ_ACCOUNTS = [
+  {name:'李大笔', school:'霸刀', created:'2017-08-01T16:28:00', icon:'🔥'},
+  {name:'凌波', school:'凌雪阁', created:'2022-02-03T23:58:26', icon:'🌊'},
+  {name:'龙醒', school:'丐帮', created:'2023-07-25T23:03:40', icon:'🐉'}
+];
+// 基础常量
+const TG=['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];
+const DZ=['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥'];
+const GONG_NM={1:'坎1',2:'坤2',3:'震3',4:'巽4',5:'中5',6:'乾6',7:'兑7',8:'艮8',9:'离9'};
+const GONG_WX={1:'水',2:'土',3:'木',4:'木',5:'土',6:'金',7:'金',8:'土',9:'火'};
+const MEN_WX={'休':'水','生':'土','伤':'木','杜':'木','景':'火','死':'土','惊':'金','开':'金'};
+const XUN=['甲子','甲戌','甲申','甲午','甲辰','甲寅'];
+const DUN={'甲子':'戊','甲戌':'己','甲申':'庚','甲午':'辛','甲辰':'壬','甲寅':'癸'};
+const SHEN=['值符','腾蛇','太阴','六合','白虎','玄武','九地','九天'];
+const WX_KE={'木':'土','土':'水','水':'火','火':'金','金':'木'};
+const ZHI_GONG={'子':1,'丑':8,'寅':8,'卯':3,'辰':5,'巳':4,'午':9,'未':2,'申':2,'酉':7,'戌':6,'亥':6};
+const XING_MAP={'戊':3,'己':2,'庚':8,'辛':9,'壬':6,'癸':4};
+// 天干五行 & 日干落宫（后天八卦）
+const GAN_WX={'甲':'木','乙':'木','丙':'火','丁':'火','戊':'土','己':'土','庚':'金','辛':'金','壬':'水','癸':'水'};
+const GAN_GONG={'甲':3,'乙':3,'丙':9,'丁':9,'戊':2,'己':2,'庚':7,'辛':7,'壬':1,'癸':1};
+// 五行生克关系：宫五行对日干五行 → 生克分值
+function wxScore(gongWx,ganWx){
+  if(gongWx===ganWx)return 1;            // 比和
+  // gong生gan: 木→火,火→土,土→金,金→水,水→木
+  const sheng={'木':'火','火':'土','土':'金','金':'水','水':'木'};
+  if(sheng[gongWx]===ganWx)return 2;      // 宫生日干=大吉
+  if(sheng[ganWx]===gongWx)return -1;     // 日生宫=小耗
+  // 克：gong克gan
+  const ke={'木':'土','土':'水','水':'火','火':'金','金':'木'};
+  if(ke[gongWx]===ganWx)return -2;        // 宫克日干=凶
+  if(ke[ganWx]===gongWx)return 0;         // 日克宫=小吉
+  return 0;
+}
+// 八神落宫→翻牌位置映射（左一/左二/中/右二/右一）
+const GONG_POS={1:0,4:0,3:1,2:2,5:2,8:2,7:3,6:4,9:4};
+// ===== 实测校准日志（主人翻牌实测反馈）=====
+// 2026-10-18 丑时 李大笔：推荐"中"(艮8,GONG_POS=2) → 实际出好牌：右二(第4张)、右一(第5张)，各一次。
+//   即艮8 实测偏向右侧，中位映射存疑。待另外两号（凌波/龙醒）实测后统一定规律再改映射，勿凭2个样本乱调。
+// （待补：凌波 __，龙醒 __）
+const HOUR_LABELS={'子':'子时(23-01)','丑':'丑时(01-03)','寅':'寅时(03-05)','卯':'卯时(05-07)','辰':'辰时(07-09)','巳':'巳时(09-11)','午':'午时(11-13)','未':'未时(13-15)','申':'申时(15-17)','酉':'酉时(17-19)','戌':'戌时(19-21)','亥':'亥时(21-23)'};
+const JQ_JU={'冬至':[1,7,4],'小寒':[2,8,5],'大寒':[3,9,6],'立春':[8,5,2],'雨水':[9,6,3],'惊蛰':[1,7,4],'春分':[3,9,6],'清明':[4,1,7],'谷雨':[5,2,8],'立夏':[4,1,7],'小满':[5,2,8],'芒种':[6,3,9],'夏至':[9,3,6],'小暑':[8,2,5],'大暑':[7,1,4],'立秋':[2,5,8],'处暑':[1,4,7],'白露':[9,3,6],'秋分':[7,1,4],'寒露':[6,9,3],'霜降':[5,8,2],'立冬':[6,9,3],'小雪':[5,8,2],'大雪':[4,7,1]};
+const YANG_DUN=new Set(['冬至','小寒','大寒','立春','雨水','惊蛰','春分','清明','谷雨','立夏','小满','芒种']);
+const JQ_DATES=[['2024-12-21','冬至'],['2025-01-05','小寒'],['2025-01-20','大寒'],['2025-02-03','立春'],['2025-02-18','雨水'],['2025-03-05','惊蛰'],['2025-03-20','春分'],['2025-04-04','清明'],['2025-04-20','谷雨'],['2025-05-05','立夏'],['2025-05-21','小满'],['2025-06-05','芒种'],['2025-06-21','夏至'],['2025-07-07','小暑'],['2025-07-22','大暑'],['2025-08-07','立秋'],['2025-08-23','处暑'],['2025-09-07','白露'],['2025-09-23','秋分'],['2025-10-08','寒露'],['2025-10-23','霜降'],['2025-11-07','立冬'],['2025-11-22','小雪'],['2025-12-07','大雪'],['2025-12-21','冬至'],['2026-01-05','小寒'],['2026-01-20','大寒'],['2026-02-04','立春'],['2026-02-18','雨水'],['2026-03-05','惊蛰'],['2026-03-20','春分'],['2026-04-05','清明'],['2026-04-20','谷雨'],['2026-05-05','立夏'],['2026-05-21','小满'],['2026-06-05','芒种'],['2026-06-21','夏至'],['2026-07-07','小暑'],['2026-07-22','大暑'],['2026-08-07','立秋'],['2026-08-23','处暑'],['2026-09-07','白露'],['2026-09-23','秋分'],['2026-10-08','寒露'],['2026-10-23','霜降'],['2026-11-07','立冬'],['2026-11-22','小雪'],['2026-12-07','大雪'],['2026-12-22','冬至'],['2027-01-05','小寒'],['2027-01-20','大寒'],['2027-02-04','立春'],['2027-02-18','雨水'],['2027-03-05','惊蛰'],['2027-03-20','春分'],['2027-04-05','清明'],['2027-04-20','谷雨'],['2027-05-05','立夏'],['2027-05-21','小满'],['2027-06-05','芒种'],['2027-06-21','夏至'],['2027-07-07','小暑'],['2027-07-22','大暑'],['2027-08-07','立秋'],['2027-08-23','处暑'],['2027-09-07','白露'],['2027-09-23','秋分'],['2027-10-08','寒露'],['2027-10-23','霜降'],['2027-11-07','立冬'],['2027-11-22','小雪'],['2027-12-07','大雪'],['2027-12-22','冬至'],['2028-01-05','小寒'],['2028-01-20','大寒'],['2028-02-04','立春'],['2028-02-18','雨水'],['2028-03-05','惊蛰'],['2028-03-20','春分'],['2028-04-04','清明'],['2028-04-19','谷雨'],['2028-05-05','立夏'],['2028-05-20','小满'],['2028-06-05','芒种'],['2028-06-21','夏至'],['2028-07-06','小暑'],['2028-07-22','大暑'],['2028-08-07','立秋'],['2028-08-22','处暑']].map(([d,n])=>[new Date(d+'T00:00:00'),n]).sort((a,b)=>a[0]-b[0]);
+const BASE_DATE=new Date('2000-01-07T00:00:00');
+// 干支计算
+function getDayGZ(s){const d=new Date(s+'T00:00:00');const diff=Math.floor((d-BASE_DATE)/86400000);let idx=((diff%60)+60)%60;return{gz:TG[idx%10]+DZ[idx%12],gan:TG[idx%10],zhi:DZ[idx%12]};}
+function getHourGZ(dg,hz){const gi=TG.indexOf(dg);let sg;if([0,5].includes(gi))sg=0;else if([1,6].includes(gi))sg=2;else if([2,7].includes(gi))sg=4;else if([3,8].includes(gi))sg=6;else sg=8;const hi=DZ.indexOf(hz);return{gz:TG[(sg+hi)%10]+hz,gan:TG[(sg+hi)%10]};}
+function getXun(hg,hz){const g=TG.indexOf(hg),z=DZ.indexOf(hz);for(let n=0;n<60;n++)if(n%10===g&&n%12===z)return XUN[Math.floor(n/10)];return null;}
+function getKongWang(hg,hz){const x=getXun(hg,hz);const KW={'甲子':['戌','亥'],'甲戌':['申','酉'],'甲申':['午','未'],'甲午':['辰','巳'],'甲辰':['寅','卯'],'甲寅':['子','丑']};return KW[x];}
+function getJieqiYuan(s){const d=new Date(s+'T00:00:00');let jq=null,jd=null;for(const[x,n]of JQ_DATES){if(x<=d){jq=n;jd=x;}else if(jq===null){jq=n;jd=x;break;}}const ds=Math.floor((d-jd)/86400000);return{jq,yuan:['上元','中元','下元'][Math.floor(ds/5)%3]};}
+function getJu(jq,yuan){return JQ_JU[jq][['上元','中元','下元'].indexOf(yuan)];}
+// 九宫飞布
+function flyGong(ju,isYang){const LY=['戊','己','庚','辛','壬','癸','丁','丙','乙'];const od=[];let p=ju;for(let i=0;i<9;i++){od.push(p);p=isYang?(p%9+1):((p-2+9)%9+1);}const dp={};for(let i=0;i<9;i++)dp[od[i]]=LY[i];return dp;}
+function getTianpan(dp,hg,hz,isYang){const x=getXun(hg,hz);const dg=DUN[x];let zg=1;for(const[g,gn]of Object.entries(dp))if(gn===dg){zg=parseInt(g);break;}if(zg===5)zg=2;let sg=zg;for(const[g,gn]of Object.entries(dp))if(gn===hg){sg=parseInt(g);break;}const fly=[1,2,3,4,5,6,7,8,9];const zi=fly.indexOf(zg),si=fly.indexOf(sg);let off=0;if(hg!=='甲')off=isYang?((si-zi)%9+9)%9:((zi-si)%9+9)%9;const tp={};for(let i=0;i<9;i++){const dst=isYang?fly[(i+off)%9]:fly[((i-off)%9+9)%9];tp[dst]=dp[fly[i]];}return{tpan:tp,zhifuGong:zg};}
+function getBamen(zg,hg,hz,isYang){const x=getXun(hg,hz);const MO={1:'休',8:'生',3:'伤',4:'杜',9:'景',2:'死',7:'惊',6:'开'};const zm=MO[zg]||'休';const xc=XUN.indexOf(x)+1;const MR={};for(const[k,v]of Object.entries(MO))MR[v]=parseInt(k);const zog=MR[zm];const f8=[1,2,3,4,6,7,8,9];const oi=f8.indexOf(zog);let zsg=oi>=0?(isYang?f8[(oi+xc)%8]:f8[((oi-xc)%8+8)%8]):(isYang?f8[xc%8]:f8[((-xc)%8+8)%8]);const MS=['休','生','伤','杜','景','死','惊','开'];const mp={};const ti=f8.indexOf(zsg);for(let i=0;i<MS.length;i++){mp[isYang?f8[(ti+i)%8]:f8[((ti-i)%8+8)%8]]=MS[i];}return mp;}
+function getBashen(zg,isYang){const f8=[1,2,3,4,6,7,8,9];const sp={};const ti=f8.indexOf(zg);for(let i=0;i<SHEN.length;i++){sp[isYang?f8[(ti+i)%8]:f8[((ti-i)%8+8)%8]]=SHEN[i];}return sp;}
+// 格局判断
+function checkGeju(dp,tp,mp,sp,hg,hz){
+  const tags=[];let f=false;const fr=[];
+  const x=getXun(hg,hz);const dg=DUN[x];
+  let sg=null;for(const[g,gn]of Object.entries(dp))if(gn===hg){sg=parseInt(g);break;}
+  if(hg==='甲')for(const[g,gn]of Object.entries(dp))if(gn===dg){sg=parseInt(g);break;}
+  if(sg===5)sg=2;
+  // 凶格过滤
+  if(sg&&mp[sg]){const m=mp[sg];if(WX_KE[MEN_WX[m]]===GONG_WX[sg]){f=true;fr.push('门迫');}}
+  const kw=getKongWang(hg,hz);const kg=kw.map(z=>{let g=ZHI_GONG[z];return g===5?2:g;});
+  if(sg&&kg.includes(sg)){f=true;fr.push('空亡');}
+  if(sg){const tg=tp[sg];if(XING_MAP[tg]===sg){f=true;fr.push('击刑');}}
+  // 吉格判定——遍历九宫
+  for(const g of Object.keys(tp)){
+    const gi=parseInt(g);if(gi===5)continue;
+    const tg=tp[g],dgn=dp[g],m=mp[g],sh=sp[g];
+    // 三奇得使：天盘乙丙丁+地盘旬首遁干
+    if(['乙','丙','丁'].includes(tg)&&dgn===dg)tags.push('三奇得使('+tg+')');
+    // 玉女守门：丁+开门
+    if(tg==='丁'&&m==='开')tags.push('玉女守门');
+    // 人遁：丁+休门+太阴
+    if(tg==='丁'&&m==='休'&&sh==='太阴')tags.push('人遁');
+    // 天遁：丙+生门+地盘丁
+    if(tg==='丙'&&m==='生'&&dgn==='丁')tags.push('天遁');
+    // 地遁：乙+开门+地盘己
+    if(tg==='乙'&&m==='开'&&dgn==='己')tags.push('地遁');
+    // 神遁：丙+生门+九天
+    if(tg==='丙'&&m==='生'&&sh==='九天')tags.push('神遁');
+    // 鬼遁：丁+杜门+九地 或 丁+开门+九地
+    if(tg==='丁'&&(m==='杜'||m==='开')&&sh==='九地')tags.push('鬼遁');
+    // 龙遁：乙+开/休/生+地盘癸或坎宫
+    if(tg==='乙'&&(m==='开'||m==='休'||m==='生')&&(dgn==='癸'||gi===1))tags.push('龙遁');
+    // 虎遁：乙+休/生+地盘辛+艮宫
+    if(tg==='乙'&&(m==='休'||m==='生')&&dgn==='辛'&&gi===8)tags.push('虎遁');
+    // 三诈：三吉门(开/休/生)+三奇(乙/丙/丁)+八神
+    if((m==='开'||m==='休'||m==='生')&&['乙','丙','丁'].includes(tg)){
+      if(sh==='太阴')tags.push('真诈');
+      else if(sh==='九地')tags.push('重诈');
+      else if(sh==='六合')tags.push('休诈');
+    }
+    // 三奇升殿：乙临震3宫/丙临离9宫/丁临兑7宫
+    if(tg==='乙'&&gi===3)tags.push('乙奇升殿');
+    if(tg==='丙'&&gi===9)tags.push('丙奇升殿');
+    if(tg==='丁'&&gi===7)tags.push('丁奇升殿');
+  }
+  // 去重
+  const ut=[...new Set(tags)];
+  // 每个宫的吉格映射（翻牌建议要求：位置/门/神/格必须是同一个宫）
+  const tagMap={};
+  for(const g of Object.keys(tp)){
+    const gi=parseInt(g);if(gi===5)continue;
+    const tg=tp[g],dgn=dp[g],m=mp[g],sh=sp[g];const gt=[];
+    if(['乙','丙','丁'].includes(tg)&&dgn===dg)gt.push('三奇得使('+tg+')');
+    if(tg==='丁'&&m==='开')gt.push('玉女守门');
+    if(tg==='丁'&&m==='休'&&sh==='太阴')gt.push('人遁');
+    if(tg==='丙'&&m==='生'&&dgn==='丁')gt.push('天遁');
+    if(tg==='乙'&&m==='开'&&dgn==='己')gt.push('地遁');
+    if(tg==='丙'&&m==='生'&&sh==='九天')gt.push('神遁');
+    if(tg==='丁'&&(m==='杜'||m==='开')&&sh==='九地')gt.push('鬼遁');
+    if(tg==='乙'&&(m==='开'||m==='休'||m==='生')&&(dgn==='癸'||gi===1))gt.push('龙遁');
+    if(tg==='乙'&&(m==='休'||m==='生')&&dgn==='辛'&&gi===8)gt.push('虎遁');
+    if((m==='开'||m==='休'||m==='生')&&['乙','丙','丁'].includes(tg)){
+      if(sh==='太阴')gt.push('真诈');else if(sh==='九地')gt.push('重诈');else if(sh==='六合')gt.push('休诈');
+    }
+    if(tg==='乙'&&gi===3)gt.push('乙奇升殿');
+    if(tg==='丙'&&gi===9)gt.push('丙奇升殿');
+    if(tg==='丁'&&gi===7)gt.push('丁奇升殿');
+    if(gt.length)tagMap[gi]=[...new Set(gt)];
+  }
+  return{tags:ut,isFiltered:f,filterReason:fr,shiganGong:sg,tagMap:tagMap};
+}
+// 主排盘（原始——基于当前日期日干）
+function paiPan(ds,hz){const dg=getDayGZ(ds);const hg=getHourGZ(dg.gan,hz);const{jq,yuan}=getJieqiYuan(ds);const ju=getJu(jq,yuan);const isYang=YANG_DUN.has(jq);const dp=flyGong(ju,isYang);const{tpan,zhifuGong}=getTianpan(dp,hg.gan,hz,isYang);const mp=getBamen(zhifuGong,hg.gan,hz,isYang);const sp=getBashen(zhifuGong,isYang);const{tags,isFiltered,filterReason,shiganGong,tagMap}=checkGeju(dp,tpan,mp,sp,hg.gan,hz);return{date:ds,hourZhi:hz,dayGz:dg.gz,hourGz:hg.gz,jq,yuan,ju,isYang,shiganGong,tpanGan:tpan[shiganGong]||'?',menAtGong:mp[shiganGong]||'?',shenAtGong:sp[shiganGong]||'?',shenMap:sp,menMap:mp,tpanMap:tpan,tagMap:tagMap,tags,isFiltered,filterReason};}
+// 账号独立排盘——用账号建号日的日干替代当前日期日干，实现每账号独立排盘
+// 节气/局数仍基于当前日期 ds（局数按节气走），但日干/时干基于账号建号日
+function paiPanForAccount(ds,hz,accountDayGan){
+  // 用账号日干计算时干（五鼠遁日起时）
+  const hg=getHourGZ(accountDayGan,hz);
+  // 节气/局数基于当前日期
+  const{jq,yuan}=getJieqiYuan(ds);
+  const ju=getJu(jq,yuan);
+  const isYang=YANG_DUN.has(jq);
+  const dp=flyGong(ju,isYang);
+  // 天盘旋转基于账号时干
+  const{tpan,zhifuGong}=getTianpan(dp,hg.gan,hz,isYang);
+  const mp=getBamen(zhifuGong,hg.gan,hz,isYang);
+  const sp=getBashen(zhifuGong,isYang);
+  const{tags,isFiltered,filterReason,shiganGong,tagMap}=checkGeju(dp,tpan,mp,sp,hg.gan,hz);
+  return{date:ds,hourZhi:hz,dayGz:accountDayGan,hourGz:hg.gz,jq,yuan,ju,isYang,shiganGong,tpanGan:tpan[shiganGong]||'?',menAtGong:mp[shiganGong]||'?',shenAtGong:sp[shiganGong]||'?',shenMap:sp,menMap:mp,tpanMap:tpan,tagMap:tagMap,tags,isFiltered,filterReason};
+}
+function getAccountRg(cs){return getDayGZ(cs.slice(0,10)).gan;}
+// 周排盘
+function getWeekDates(){const t=new Date();const dow=t.getDay()||7;const m=new Date(t);m.setDate(m.getDate()-dow+1);const dates=[];for(let i=0;i<7;i++){const d=new Date(m);d.setDate(m.getDate()+i);dates.push(d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'));}return dates;}
+function getWeekNumber(){const t=new Date();const s=new Date(t.getFullYear(),0,1);return Math.ceil(((t-s)/86400000+s.getDay()+1)/7);}
+function generateWeekSchedule(){
+  const dates=getWeekDates();
+  const accounts=PZ_ACCOUNTS.map(a=>({...a,rg:getAccountRg(a.created),isSanqi:['乙','丙','丁'].includes(getAccountRg(a.created))}));
+  const days=[],recommend={},filtered={};
+  accounts.forEach(a=>{recommend[a.name]=[];filtered[a.name]=[];});
+  const wdN='一二三四五六日';
+  dates.forEach(dateStr=>{
+    const d=new Date(dateStr+'T00:00:00');
+    const wd=d.getDay()||7;
+    const isWeekend=wd>=6;
+    const sample=paiPan(dateStr,'子');
+    const dg=getDayGZ(dateStr);
+    const hg=getHourGZ(dg.gan,'子');
+    const kw=getKongWang(hg.gan,'子');
+    days.push({dt:dateStr.slice(5).replace('-','/'),wd:wdN[wd-1],dateStr,gz:sample.dayGz,jq:sample.jq,yuan:sample.yuan,ju:sample.ju,isYang:sample.isYang,isWeekend,kwStr:kw.join('')});
+    const hours=isWeekend?['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥']:['戌','亥','子'];
+    accounts.forEach(a=>{
+      const ganWx=GAN_WX[a.rg]||'土';
+      hours.forEach(hz=>{
+        if([1,3,4].includes(wd)&&hz==='亥')return;
+        // 关键改动：每个账号用自己的建号日干独立排盘
+        const r=paiPanForAccount(dateStr,hz,a.rg);
+        const entry={dateStr,dt:dateStr.slice(5).replace('-','/')+'('+wdN[wd-1]+')',t:HOUR_LABELS[hz],gong:GONG_NM[r.shiganGong]||'?',men:r.menAtGong+'门',tag:r.tags.join('+'),pri:r.tags.length>0?'A':'B',shiganGan:r.tpanGan,shen:r.shenAtGong};
+        // 计算该账号日干与时干落宫的生克分（差异化关键）
+        const sg=r.shiganGong;
+        const gongWx=GONG_WX[sg]||'土';
+        entry.wxScore=wxScore(gongWx,ganWx);
+        entry.gongWx=gongWx;
+        entry.ganWx=ganWx;
+        if(r.isFiltered){filtered[a.name].push({...entry,reason:r.filterReason[0]});}
+        else{let sqm=false;if(a.isSanqi)r.tags.forEach(t=>{if(t.includes('三奇得使')&&t.includes(a.rg))sqm=true;});entry.sanqiMatch=sqm;recommend[a.name].push(entry);}
+      });
+    });
+  });
+  return{accounts,days,recommend,filtered};
+}
+// 判断排盘条目是否在未来（基于 dateStr 和时辰）
+function getHourRange(t){
+  const m=t.match(/(\d+)-(\d+)/);
+  if(!m)return[0,24];
+  let s=parseInt(m[1]),e=parseInt(m[2]);
+  if(e<s)e+=24; // 跨子时
+  return[s,e];
+}
+function isFutureEntry(entry){
+  const now=new Date();
+  const d=new Date(entry.dateStr+'T00:00:00');
+  const todayStr=localTodayStr();
+  if(entry.dateStr>todayStr)return true;
+  if(entry.dateStr<todayStr)return false;
+  const[hs,he]=getHourRange(entry.t);
+  const curH=now.getHours()+now.getMinutes()/60;
+  // 跨子时条目（23-01），结束小时为25；只要当前小时<结束小时即可
+  return curH<he;
+}
+// 翻牌建议——基于当前时辰实时排盘，每个账号独立排盘+差异化推荐
+function generateFlipAdvice(schedule){
+  const advice={};
+  const PN=['左一','左二','中','右二','右一'];
+  const SR={'值符':5,'九天':4,'太阴':3,'六合':3,'九地':2,'白虎':1,'玄武':1,'腾蛇':0};
+  // 获取当前时辰
+  const now=new Date();
+  const h=now.getHours();
+  const hzMap={23:'子',0:'子',1:'丑',2:'丑',3:'寅',4:'寅',5:'卯',6:'卯',7:'辰',8:'辰',9:'巳',10:'巳',11:'午',12:'午',13:'未',14:'未',15:'申',16:'申',17:'酉',18:'酉',19:'戌',20:'戌',21:'亥',22:'亥'};
+  const curHz=hzMap[h]||'子';
+  const todayStr=localTodayStr();
+  const curLabel=HOUR_LABELS[curHz]||curHz;
+  // 关键改动：每个账号独立排盘，不再共享
+  schedule.accounts.forEach(a=>{
+    const r=paiPanForAccount(todayStr,curHz,a.rg); // 每个账号用自己的建号日干排盘
+    const entry={dateStr:todayStr,dt:todayStr.slice(5).replace('-','/'),t:curLabel,gong:GONG_NM[r.shiganGong]||'?',men:r.menAtGong+'门',tag:r.tags.join('+'),shen:r.shenAtGong};
+    // 当前时辰是否被过滤（凶格）
+    if(r.isFiltered){
+      advice[a.name]={pos:'暂缓',posIdx:undefined,isPast:false,bestTime:'当前 '+curLabel,gong:entry.gong,men:entry.men,tag:entry.tag||'无吉格',shen:entry.shen,reason:'当前时辰'+r.filterReason.join('+')+'，不宜翻牌，建议等下一个吉时'};
+      return;
+    }
+    // ===== 日干差异化翻牌位置（自洽版）=====
+    // 评分只看"八神权重 + 该宫对日干生克 + 该宫吉格加成"，位置/门/神/格全部取自同一个宫
+    const ganWx=GAN_WX[a.rg]||'土';
+    let bestShen=null,bestScore=-99,bestGong=null;
+    for(const[gongNum,shenName] of Object.entries(r.shenMap)){
+      const gn=parseInt(gongNum);
+      if(gn===5)continue; // 中宫无八神
+      const sr=SR[shenName]||0;
+      const gongWx=GONG_WX[gn]||'土';
+      const ws=wxScore(gongWx,ganWx);
+      // 吉格加成：这个宫自己带吉格才加分（位置与格一致的关键）
+      const gTags=(r.tagMap&&r.tagMap[gn])||[];
+      const tgBonus=gTags.length*3;
+      const score=sr+ws+tgBonus;
+      if(score>bestScore){bestScore=score;bestShen=shenName;bestGong=gn;}
+    }
+    // 该宫自己的门/天盘干/吉格——不再借用时干宫的
+    const bestGongNm=GONG_NM[bestGong]||'?';
+    const bestMen=(r.menMap&&r.menMap[bestGong]?r.menMap[bestGong]:'?')+'门';
+    const bestTags=(r.tagMap&&r.tagMap[bestGong])||[];
+    const pi=GONG_POS[bestGong]!==undefined?GONG_POS[bestGong]:2;
+    const sqMatch=a.isSanqi&&bestTags.some(t=>t.includes('三奇得使')&&t.includes(a.rg));
+    const wxDesc=bestScore>=9?'大吉':bestScore>=6?'吉':bestScore>=3?'小吉':bestScore>=0?'平':'慎';
+    advice[a.name]={pos:PN[pi],posIdx:pi,isPast:false,bestTime:'当前 '+curLabel,
+      gong:bestGongNm,men:bestMen,tag:bestTags.length?bestTags.join('+'):'★吉位',shen:bestShen,
+      reason:bestShen+'加临'+bestGongNm+'（'+wxDesc+'，综合分'+bestScore+'），该宫'+bestMen+(bestTags.length?'，'+bestTags.join('、'):'')
+      +(sqMatch?'，三奇得使⚡':'')+'，日干'+a.rg+'('+ganWx+')与宫'+GONG_WX[bestGong]+'('+gongWxLabel(ganWx,GONG_WX[bestGong])+')'};
+  });
+  return advice;
+}
+// 生克关系文字
+function gongWxLabel(ganWx,gongWx){
+  if(ganWx===gongWx)return '比和';
+  const sheng={'木':'火','火':'土','土':'金','金':'水','水':'木'};
+  if(sheng[gongWx]===ganWx)return '宫生日干';
+  if(sheng[ganWx]===gongWx)return '日生宫';
+  const ke={'木':'土','土':'水','水':'火','火':'金','金':'木'};
+  if(ke[gongWx]===ganWx)return '宫克日干';
+  if(ke[ganWx]===gongWx)return '日克宫';
+  return '无';
+}
+
+// ========== RENDER: 排盘 ==========
+let _pzSchedule = null;
+function getPZSchedule(){
+  if(!_pzSchedule) _pzSchedule = generateWeekSchedule();
+  return _pzSchedule;
+}
+
+// 吉格标签渲染：把 tag 字符串拆成多个 chip
+function renderJigeChips(tagStr){
+  if(!tagStr) return '<span class="jige-chip normal">★吉门</span>';
+  const parts = tagStr.split('+').filter(s => s.trim());
+  if(parts.length === 0) return '<span class="jige-chip normal">★吉门</span>';
+  return parts.map(p => {
+    const t = p.trim();
+    let cls = 'normal';
+    if(t.includes('三奇得使')||t.includes('升殿')) cls = 'sanqi';
+    else if(t.includes('遁')) cls = 'dun';
+    else if(t.includes('玉女守门')) cls = 'yunu';
+    else if(t.includes('诈')) cls = 'yunu';
+    return '<span class="jige-chip '+cls+'">'+t.replace(/★/g,'')+'</span>';
+  }).join('');
+}
+
+// 吉格数量统计（用于排序）
+function jigeCount(tagStr){
+  if(!tagStr) return 0;
+  return tagStr.split('+').filter(s => s.trim()).length;
+}
+
+function renderPZRecommend() {
+  const sch = getPZSchedule();
+  const flipAdvice = generateFlipAdvice(sch);
+  const weekNum = getWeekNumber();
+  const firstDay = sch.days[0];
+  const lastDay = sch.days[sch.days.length-1];
+
+  let html = `<div class="card">
+    <div class="card-title">🔮 第${weekNum}周（${firstDay.dt}-${lastDay.dt}）试炼排盘</div>
+    <div style="font-size:12px;color:var(--text-3);margin-bottom:12px">奇门遁甲·动态排盘引擎 | 已过滤凶格（门迫+空亡+击刑）</div>
+    <div class="day-summary">`;
+
+  // 按节气+局数分组显示
+  const jqGroups = {};
+  sch.days.forEach(d => {
+    const key = `${d.jq}${d.yuan}`;
+    if(!jqGroups[key]) jqGroups[key] = {days:[], ju:d.ju, isYang:d.isYang, jq:d.jq, yuan:d.yuan};
+    jqGroups[key].days.push(d.dt);
+  });
+  Object.values(jqGroups).forEach(g => {
+    const yd = g.isYang ? '阳' : '阴';
+    const color = g.isYang ? 'var(--orange)' : 'var(--purple)';
+    html += `<div class="row"><span class="label">${g.days[0]}-${g.days[g.days.length-1]}</span><span class="val" style="color:${color};font-size:14px">${g.jq}${g.yuan} · ${yd}遁${g.ju}局</span></div>`;
+  });
+  html += `</div></div>`;
+
+  // 翻牌建议总览（基于当前时辰实时排盘）
+  html += `<div class="card">
+    <div class="card-title">🃏 翻牌建议（当前时辰）</div>
+    <div style="font-size:12px;color:var(--text-3);margin-bottom:10px">根据当前时辰八神位置推荐翻牌，实时更新</div>`;
+  sch.accounts.forEach(a => {
+    const adv = flipAdvice[a.name];
+    const sqTag = a.isSanqi ? '<span style="color:var(--yellow);font-size:11px;margin-left:6px">⚡三奇</span>' : '';
+    html += `<div style="background:var(--inset);border-radius:var(--radius-sm);padding:12px;margin-bottom:8px;border-left:4px solid ${adv.posIdx!==undefined?'var(--blue)':'var(--red)'}">
+      <div style="font-size:13px;font-weight:600;margin-bottom:4px">${a.icon} ${a.name}（${a.school}·日干${a.rg}）${sqTag}</div>`;
+    if(adv.posIdx !== undefined){
+      html += `<div style="display:flex;align-items:center;gap:8px;margin:6px 0">
+        <div style="font-size:11px;color:var(--text-3)">推荐翻牌：</div>
+        <div style="font-size:18px;font-weight:700;color:var(--blue)">${adv.pos}</div>
+      </div>
+      <div style="font-size:12px;color:var(--text-2)">⏰ ${adv.bestTime} · ${adv.shen}加临${adv.gong}</div>
+      <div style="font-size:11px;color:var(--text-3);margin-top:2px">${adv.reason}</div>
+      <div class="jige-chips">${renderJigeChips(adv.tag)}</div>`;
+    } else {
+      html += `<div style="font-size:12px;color:var(--red)">⚠️ ${adv.reason}</div>`;
+    }
+    html += `</div>`;
+  });
+  html += `</div>`;
+
+  // 每个账号的推荐时段
+  sch.accounts.forEach(acc => {
+    const recs = sch.recommend[acc.name] || [];
+    const future = recs.filter(isFutureEntry);
+    // 排序：吉格数量 > 日干生克分 > 三奇得使
+    const sortByJige = (a,b) => {
+      const ja = jigeCount(a.tag), jb = jigeCount(b.tag);
+      if(jb !== ja) return jb - ja;
+      const wa = a.wxScore||0, wb = b.wxScore||0;
+      if(wb !== wa) return wb - wa;
+      if(a.sanqiMatch && !b.sanqiMatch) return -1;
+      if(!a.sanqiMatch && b.sanqiMatch) return 1;
+      return 0;
+    };
+    const sortedFuture = future.slice().sort(sortByJige);
+    const sortedAll = recs.slice().sort(sortByJige);
+    const best = sortedFuture[0] || sortedAll[0];
+    const sqTag = acc.isSanqi ? '<span style="color:var(--yellow);font-size:11px;margin-left:6px">⚡三奇</span>' : '';
+    html += `<div class="card">
+      <div class="card-title">${acc.icon} ${acc.name}（${acc.school}·日干${acc.rg}）${sqTag}</div>`;
+    if (best) {
+      const isPast = !isFutureEntry(best);
+      const jc = jigeCount(best.tag);
+      const isSqMatch = best.sanqiMatch;
+      const borderColor = isSqMatch ? 'var(--yellow)' : (jc >= 2 ? 'var(--yellow)' : 'var(--green)');
+      const label = isPast ? '🕓 最近可用' : '🎯 首选';
+      const buffBadge = jc >= 2 ? '<span class="jige-count">'+jc+'重buff</span>' : '';
+      html += `<div style="background:var(--inset);border-radius:var(--radius-sm);padding:14px;margin-bottom:10px;border-left:4px solid ${borderColor}">
+        <div style="font-size:11px;color:var(--text-3);margin-bottom:4px">${label}${isSqMatch?' ⚡三奇得使':''}${buffBadge}${isPast?' <span style="color:var(--red)">(已过期)</span>':''}</div>
+        <div style="font-size:16px;font-weight:700;color:var(--text)">${best.dt} ${best.t}</div>
+        <div style="font-size:13px;color:var(--text-2);margin-top:4px">${best.gong} ${best.men} · ${best.shen} · 日干${acc.rg}(${best.ganWx||''})<span style="color:${(best.wxScore||0)>=2?'var(--green)':(best.wxScore||0)<0?'var(--red)':'var(--text-3)'}"> ${gongWxLabel(best.ganWx||'',best.gongWx||'')} ${best.wxScore>=0?'+':''}${best.wxScore||0}</span></div>
+        <div class="jige-chips">${renderJigeChips(best.tag)}</div>
+      </div>`;
+    }
+    const displayRecs = sortedFuture.length > 0 ? sortedFuture : sortedAll;
+    if (displayRecs.length > 0) {
+      const showAll = displayRecs.length <= 8;
+      html += `<div style="font-size:12px;color:var(--text-2);margin-bottom:6px">${sortedFuture.length > 0 ? '未来可用' : '全部可用'} ${displayRecs.length} 个时段（按吉格数+日干生克排序）：</div>`;
+      displayRecs.forEach((r, idx) => {
+        if(!showAll && idx >= 6){
+          return;
+        }
+        const c = r.sanqiMatch ? 'var(--yellow)' : (r.pri === 'A' ? 'var(--yellow)' : 'var(--text-2)');
+        const sqIcon = r.sanqiMatch ? '⚡' : '';
+        const jc = jigeCount(r.tag);
+        const buffBadge = jc >= 2 ? '<span class="jige-count">'+jc+'重</span>' : '';
+        const wxColor=(r.wxScore||0)>=2?'var(--green)':(r.wxScore||0)<0?'var(--red)':'var(--text-3)';
+        const wxStr='<span style="color:'+wxColor+';font-size:10px">'+(r.wxScore>=0?'+':'')+r.wxScore+'</span>';
+        html += `<div style="font-size:12px;color:var(--text-3);padding:6px 0;border-bottom:1px solid var(--bdr)">
+          <div style="display:flex;align-items:center;gap:4px"><span style="color:${c};font-weight:600">${sqIcon}${r.dt}</span> ${r.t} · ${r.gong}${r.men} · ${r.shen}${buffBadge} ${wxStr}</div>
+          <div class="jige-chips">${renderJigeChips(r.tag)}</div>
+        </div>`;
+      });
+      if(!showAll){
+        html += `<div style="font-size:11px;color:var(--text-3);margin-top:4px">等 ${displayRecs.length - 6} 个更多时段，详见吉时表...</div>`;
+      }
+    } else {
+      html += `<div style="font-size:13px;color:var(--red);padding:10px 0">⚠️ 本周无可用吉时</div>`;
+    }
+    html += `</div>`;
+  });
+
+  // 凶格过滤汇总
+  const totalFiltered = Object.values(sch.filtered).reduce((s, a) => s + a.length, 0);
+  html += `<div class="card">
+    <div class="card-title" style="color:var(--red)">⚠️ 凶格过滤</div>
+    <div style="font-size:12px;color:var(--text-3);margin-bottom:8px">共排除 ${totalFiltered} 个吉门时段（门迫/空亡/击刑）</div>`;
+  sch.accounts.forEach(acc => {
+    const items = sch.filtered[acc.name] || [];
+    if (items.length > 0) {
+      html += `<div style="font-size:12px;color:var(--text-2);margin-bottom:4px;margin-top:8px">${acc.name} 被排除 ${items.length} 个：</div>`;
+      items.slice(0, 3).forEach(f => {
+        html += `<div style="font-size:11px;color:var(--text-3);padding:2px 0">· ${f.dt} ${f.t} ${f.gong}${f.men} ← ${f.reason}</div>`;
+      });
+      if (items.length > 3) html += `<div style="font-size:11px;color:var(--text-3)">...等共 ${items.length} 个</div>`;
+    }
+  });
+  html += `</div>`;
+
+  document.getElementById('sub-pz-recommend').innerHTML = html;
+}
+
+function renderPZDetail() {
+  const sch = getPZSchedule();
+  let html = '';
+  sch.accounts.forEach(acc => {
+    const recs = (sch.recommend[acc.name] || []).slice().sort((a,b) => {
+      const ja = jigeCount(a.tag), jb = jigeCount(b.tag);
+      if(jb !== ja) return jb - ja;
+      if(a.sanqiMatch && !b.sanqiMatch) return -1;
+      if(!a.sanqiMatch && b.sanqiMatch) return 1;
+      return 0;
+    });
+    html += `<div class="card">
+      <div class="card-title">${acc.icon} ${acc.name} · 吉时表</div>
+      <div style="font-size:11px;color:var(--text-3);margin-bottom:10px">按吉格数量降序排列，多重buff优先</div>`;
+    recs.forEach(r => {
+      const isA = r.pri === 'A';
+      const sqIcon = r.sanqiMatch ? '⚡' : '';
+      const jc = jigeCount(r.tag);
+      const buffBadge = jc >= 2 ? '<span class="jige-count">'+jc+'重buff</span>' : '';
+      const borderHighlight = jc >= 2 ? 'border-left:3px solid var(--yellow)' : '';
+      html += `<div style="background:var(--inset);border-radius:var(--radius-sm);padding:12px;margin-bottom:8px;${borderHighlight}">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+          <div style="font-size:13px;font-weight:600;color:${isA ? 'var(--yellow)' : 'var(--text)'}">${sqIcon}${r.dt} ${r.t}</div>
+          ${buffBadge}
+        </div>
+        <div style="font-size:12px;color:var(--text-2);margin-bottom:4px">${r.gong} ${r.men} · ${r.shen}</div>
+        <div class="jige-chips">${renderJigeChips(r.tag)}</div>
+      </div>`;
+    });
+    html += `</div>`;
+  });
+  document.getElementById('sub-pz-detail').innerHTML = html;
+}
+
+function renderPZInfo() {
+  const sch = getPZSchedule();
+  let html = `<div class="card">
+    <div class="card-title">📅 每日干支与局数</div>
+    <div style="overflow-x:auto">
+    <table style="width:100%;border-collapse:collapse;font-size:12px">
+      <tr style="color:var(--text-3);border-bottom:1px solid var(--bdr)">
+        <th style="text-align:left;padding:6px 4px">日期</th>
+        <th style="text-align:left;padding:6px 4px">干支</th>
+        <th style="text-align:left;padding:6px 4px">节气·元</th>
+        <th style="text-align:left;padding:6px 4px">局数</th>
+        <th style="text-align:left;padding:6px 4px">空亡</th>
+      </tr>`;
+  sch.days.forEach(d => {
+    const yd = d.isYang ? '阳' : '阴';
+    const juColor = d.isYang ? 'var(--orange)' : 'var(--purple)';
+    html += `<tr style="border-bottom:1px solid var(--bdr)">
+        <td style="padding:8px 4px;color:var(--text)">${d.dt}(${d.wd})${d.isWeekend?' 🏠':''}</td>
+        <td style="padding:8px 4px;color:var(--text)">${d.gz}</td>
+        <td style="padding:8px 4px;color:var(--text-2)">${d.jq}${d.yuan}</td>
+        <td style="padding:8px 4px;color:${juColor};font-weight:600">${yd}${d.ju}局</td>
+        <td style="padding:8px 4px;color:var(--text-3)">${d.kwStr}</td>
+      </tr>`;
+  });
+  html += `</table></div></div>`;
+
+  // 账号信息
+  html += `<div class="card">
+    <div class="card-title">🎮 账号信息</div>
+    <div style="overflow-x:auto">
+    <table style="width:100%;border-collapse:collapse;font-size:12px">
+      <tr style="color:var(--text-3);border-bottom:1px solid var(--bdr)">
+        <th style="text-align:left;padding:6px 4px">账号</th>
+        <th style="text-align:left;padding:6px 4px">门派</th>
+        <th style="text-align:left;padding:6px 4px">创建时间</th>
+        <th style="text-align:left;padding:6px 4px">日干</th>
+        <th style="text-align:left;padding:6px 4px">三奇</th>
+      </tr>`;
+  sch.accounts.forEach(a => {
+    html += `<tr style="border-bottom:1px solid var(--bdr)">
+        <td style="padding:8px 4px;color:var(--text)">${a.icon} ${a.name}</td>
+        <td style="padding:8px 4px;color:var(--text-2)">${a.school}</td>
+        <td style="padding:8px 4px;color:var(--text-3)">${a.created.slice(0,10)}</td>
+        <td style="padding:8px 4px;color:var(--text);font-weight:600">${a.rg}</td>
+        <td style="padding:8px 4px;color:${a.isSanqi?'var(--yellow)':'var(--text-3)'}">${a.isSanqi?'⚡是':'否'}</td>
+      </tr>`;
+  });
+  html += `</table></div></div>`;
+
+  html += `<div class="card">
+    <div class="card-title">📖 排盘说明</div>
+    <div style="font-size:12px;color:var(--text-2);line-height:1.8">
+      <div>• 工作日仅排19:00后（戌时19-21起）</div>
+      <div>• 周末/节假日全天可排</div>
+      <div>• 英语课日(周一/三/四)亥时(21-23)已避开</div>
+      <div>• 子时(23-01)采用23:00换日约定</div>
+      <div style="margin-top:8px;color:var(--text-3)">凶格过滤：门迫+空亡+击刑，满足任一即剔除</div>
+      <div style="color:var(--text-3)">吉格标注：三奇得使/玉女守门/天遁/地遁/人遁/神遁/鬼遁/龙遁/虎遁/三诈(真诈/重诈/休诈)/三奇升殿</div>
+      <div style="margin-top:8px;color:var(--text-3)">翻牌建议：根据当前时辰八神位置实时推荐</div>
+      <div style="color:var(--text-3)">三奇得使⚡：账号日干为乙丙丁且时辰排盘匹配</div>
+      <div style="margin-top:8px;color:var(--text-3);font-style:italic">动态排盘引擎·基于当日干支节气自动计算 | 仅供游戏娱乐参考</div>
+      <div style="margin-top:8px;color:var(--blue)">⚡ 每个账号基于建号日期独立排盘，日干不同则排盘结果完全不同</div>
+      <div style="color:var(--text-3)">日干来源：建号当日的天干（李大笔=庚, 凌波=丁, 龙醒=甲）</div>
+      <div style="color:var(--text-3)">日干不同 → 时干不同 → 旬首不同 → 天盘旋转不同 → 九宫飞布/八门/八神落宫完全不同</div>
+    </div>
+  </div>`;
+  document.getElementById('sub-pz-info').innerHTML = html;
+}
+
+
+/* ===================== 通用 ===================== */
+function $id(id){return document.getElementById(id);}
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+function localTodayStr(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+function toast(msg){
+  let el=$id('wbToast');
+  if(!el){el=document.createElement('div');el.id='wbToast';el.style.cssText='position:fixed;top:13%;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.82);color:#fff;padding:11px 20px;border-radius:11px;font-size:13px;z-index:9999;pointer-events:none;transition:opacity .35s;text-align:center;max-width:80vw';document.body.appendChild(el);}
+  el.textContent=msg;el.style.opacity='1';clearTimeout(el._t);el._t=setTimeout(function(){el.style.opacity='0';},1700);
+}
+function dayDiff(a,b){return Math.round((new Date(b+'T00:00:00')-new Date(a+'T00:00:00'))/86400000);}
+function addDays(s,n){const d=new Date(s+'T00:00:00');d.setDate(d.getDate()+n);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+function md(s){return s?s.slice(5).replace('-','/'):'—';}
+function uid(){return 'x'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);}
+function n2(v){return (v==null||v===''||isNaN(+v))?null:+(+v).toFixed(1);}
+function f1(v){if(v==null)return '—';const x=+v;return (Math.abs(x)<0.05?0:x).toFixed(1);}
+
+/* ===================== 常量 ===================== */
+const GOALS={weight:69,bf:19,waist:79,ffm:55.9};
+const RATE=0.4;                       // kg / 周
+const PHASE1={start:'2026-06-07',end:'2026-11-04',w0:87.8,w1:77.7,bf0:31.1,bf1:25.8,ffm0:60.5,ffm1:57.7,waist0:101.5,waist1:86.5};
+const KEY='wb2_state';
+const WARM='3 分钟：1 分钟小碎步升温 → 1 分钟关节活动 → 1 分钟第一个动作的轻量组';
+const COOL='3 分钟：猫牛式 8 次（护腰）→ 当日主肌群静态拉伸各 30 秒 → 呼吸放松';
+const PLAN=[
+ {key:'push',day:3,label:'推 · 周三',focus:'胸 · 肩 · 三头 · 二头',warm:'小碎步 1 分钟 → 肩绕环 + 手臂画圈 1 分钟 → 俯卧撑 5 个',
+  items:[
+   ['俯卧撑 · 主项','4 × 接近力竭','自重','2 秒慢下、快起，肘 45-60°，组间 90 秒'],
+   ['脚垫高俯卧撑','3 × 8-12','自重','脚垫 10-20cm（多功能凳），别塌腰'],
+   ['哑铃侧平举 · 中束','3 × 12-15','7.5kg/手','肘微屈固定，抬到肩平就停，不耸肩'],
+   ['俯身侧平举 · 后束','3 × 15','7.5kg/手','腰背挺直，肩胛往中间夹'],
+   ['仰卧臂屈伸 · 三头','3 × 10-12','7.5kg/手','躺多功能凳，大臂不动，下放 2 秒'],
+   ['哑铃弯举 · 二头','3 × 12-15','7.5kg/手','大臂夹紧，下放 2 秒'],
+   ['死虫式 · 护腰','3 × 8/侧','自重','腰全程贴地，正常呼吸不憋气']]},
+ {key:'pull',day:6,label:'拉 · 周六',focus:'背 · 引体 · 后束 · 腹',warm:'小碎步 1 分钟 → 肩/肘绕环 1 分钟 → 轻重量划船 ×12',
+  items:[
+   ['部分幅度引体 + 离心 · 主项','3 × 5','自重','1/2 行程连拉 4 次，第 5 次 5 秒慢放到手臂伸直；组间 120 秒'],
+   ['单臂哑铃划船','4 × 12-15','12.5kg','肘往髋部拉，先沉肩再拉'],
+   ['墙天使','3 × 8-10','自重','背贴墙，手臂沿墙上下滑，腰不塌'],
+   ['锤式弯举','3 × 12-15','7.5kg/手','练肱肌和握力，配合引体'],
+   ['悬垂举膝','3 × 8-10','自重','骨盆后倾卷起来，不是甩腿'],
+   ['纯悬垂','2 × 20 秒','自重','收尾练握力，到 20 秒就放手']]},
+ {key:'leg',day:0,label:'腿 · 周日',focus:'臀 · 后链 · 护腰核心',warm:'小碎步 1 分钟 → 髋/踝画圈 1 分钟 → 徒手分腿蹲 5 次',
+  items:[
+   ['保加利亚分腿蹲 · 主项','4 × 10/侧','7.5-12.5kg/手','后脚搭凳、前脚多迈一步、躯干直立，组间 90 秒'],
+   ['单腿硬拉 · 扶墙版','3 × 10/侧','7.5-12.5kg','骨盆不歪，大腿后侧酸＝到位；全程呼气别憋气'],
+   ['单腿臀桥','3 × 10/侧','自重','顶髋时夹臀不顶腰，慢放 2 秒'],
+   ['自重深蹲 / 箭步蹲','3 × 15','自重','补容量，不追求维度'],
+   ['麦吉尔卷腹 · 护腰','3 × 8/侧','自重','腰贴地，不卷脖子']]}
+];
+const PROG=[
+ ['俯卧撑','4 组总次数连续两次上涨','脚垫高 +10cm'],
+ ['引体','3×5 全程可控','行程 1/2 → 3/4 → 全程'],
+ ['分腿蹲 / 单腿硬拉','连续两次做满上限','+2.5kg/手'],
+ ['侧平举 / 弯举 / 划船','12-15 做满上限','+2.5kg（12.5 封顶）'],
+ ['总体组数','跑满 4 周无不适','再考虑加，不主动加']
+];
+const SUPP_KEEP=[{n:'肌酸',d:'5g / 天',r:'唯一证据最强'},{n:'D3+K2',d:'1粒 / 天',r:'室内工作普遍不足'},{n:'甘氨酸镁',d:'4粒 / 天',r:'睡眠 · 抽筋'},{n:'蛋白粉',d:'每晚 2 勺',r:'补蛋白缺口，替代部分晚餐'}];
+const SUPP_MAYBE=[{n:'ADAM 多维',d:'2粒 / 天',r:'饮食杂就留着'},{n:'KSM-66',d:'1粒 / 天',r:'连吃 8 周才见效'},{n:'鱼油',d:'1种 / 天',r:'海力生EPA 和 Blackmores 二选一，EPA+DHA≥1g'}];
+const SUPP_DROP=[{n:'柠檬酸钙',r:'多维已含钙，高剂量有争议'},{n:'CoQ10',r:'没吃他汀，收益接近零'},{n:'精氨酸+瓜氨酸',r:'泵感类，证据弱'},{n:'UC-II',r:'关节没症状'},{n:'胶原蛋白肽',r:'证据最弱，最贵'}];
+const WISH_SEED=[
+ {icon:'👓',name:'林德伯格眼镜框（5选1）',status:'待购入',priority:'高',price:'2000-3000',note:'Strip Titanium 9859 眉线框首选；Blok Titanium 4256 方框备选。颜色 U9 哑光黑或深枪灰，中号 50mm。南京/上海试框记型号 → 香港买框+内地配镜片',timing:'2026 双11'},
+ {icon:'🔬',name:'蔡司新清锐 1.60 铂金膜',status:'待购入',priority:'高',price:'500-700',note:'5 年满意度已验证，膜层耐用。度数 325/350 无散光。智锐有大折扣则优先智锐',timing:'与镜框同步'},
+ {icon:'🌿',name:'Coral Aria 大地调扩香精油 200ml',status:'待购入',priority:'高',price:'~400',note:'阿联酋品牌，最接近大地原版的替代。需配扩香机，建议先试小样',timing:'观夏用完再买'}
+];
+
+/* ===================== 状态 ===================== */
+function defaultState(){
+  return {
+    stages:[{id:'s1',date:PHASE1.start,label:'阶段一 · 全程',snap:{weight:PHASE1.w0,bf:PHASE1.bf0,waist:PHASE1.waist0,ffm:PHASE1.ffm0},fixed:true}],
+    activeStage:'s1',
+    milestones:[{id:'m1',date:PHASE1.end,note:'阶段一收官',snap:{weight:PHASE1.w1,bf:PHASE1.bf1,waist:PHASE1.waist1,ffm:PHASE1.ffm1},fixed:true}],
+    body:[],meals:[],train:[],dims:[],kgl:'',wish:WISH_SEED.slice(),imported:false
+  };
+}
+function load(){
+  try{const a=JSON.parse(localStorage.getItem(KEY)||'null');if(a&&a.stages&&a.stages.length){a.wish=a.wish||WISH_SEED.slice();return a;}}catch(e){}
+  const d=defaultState();try{localStorage.setItem(KEY,JSON.stringify(d));}catch(e){}return d;
+}
+let S=load();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){toast('存储空间不足');}}
+function bodySorted(){return S.body.slice().sort(function(a,b){return a.date.localeCompare(b.date);});}
+function activeStage(){return S.stages.find(function(x){return x.id===S.activeStage;})||S.stages[0];}
+function planByDay(dow){return PLAN.find(function(p){return p.day===dow;})||null;}
+
+/* 当前值：未填字段回退上一次；去脂可推算 */
+function curVals(pool){
+  const a=(pool||bodySorted()).slice().sort(function(x,y){return x.date.localeCompare(y.date);});
+  const out={weight:null,bf:null,waist:null,ffm:null,date:null};
+  for(let i=a.length-1;i>=0;i--){const r=a[i];['weight','bf','waist','ffm'].forEach(function(k){if(out[k]==null&&r[k]!=null&&r[k]!=='')out[k]=+r[k];});}
+  const last=a[a.length-1];if(last&&(last.weight!=null||last.bf!=null))out.date=last.date;
+  if(out.ffm==null&&out.weight!=null&&out.bf!=null)out.ffm=+(out.weight*(1-out.bf/100)).toFixed(1);
+  return out;
+}
+/* 近 7 次均值（走势 / 达成率口径） */
+function avg7(field,pool){
+  const a=(pool||bodySorted()).filter(function(r){return r[field]!=null&&r[field]!=='';}).slice(-7);
+  if(!a.length)return null;
+  return a.reduce(function(s,r){return s+ +r[field];},0)/a.length;
+}
+function viewBody(){const st=activeStage();return bodySorted().filter(function(r){return r.date>=st.date;});}
+function calcView(){
+  const st=activeStage(),today=localTodayStr();
+  const day=Math.max(1,dayDiff(st.date,today)+1);
+  const planW=st.snap.weight-RATE/7*(day-1);
+  const pool=viewBody(),last=curVals(pool),w7=avg7('weight',pool);
+  const curW=last.weight!=null?last.weight:null;
+  const lost=curW!=null?st.snap.weight-curW:null;
+  const pct=Math.max(0,Math.min(100,lost/(st.snap.weight-GOALS.weight)*100));
+  const need=curW!=null?Math.max(0,curW-GOALS.weight):null;
+  const daysLeft=need!=null?Math.ceil(need/RATE*7):null;
+  const eta=daysLeft!=null?addDays(today,daysLeft):null;
+  return {st,day,planW,pool,last,curW,w7,lost,pct,need,daysLeft,eta,gap:curW!=null?curW-planW:null};
+}
+/* 减重分解：视角起点 → 最近一次实测 */
+function splitLoss(st,cur){
+  if(!cur||cur.weight==null||cur.bf==null)return null;
+  const dw=st.snap.weight-cur.weight;
+  const f0=st.snap.weight*st.snap.bf/100,f1=cur.weight*cur.bf/100;
+  const df=f0-f1,dm=+(dw-df).toFixed(2);
+  return {dw:+dw.toFixed(1),df:+df.toFixed(2),dm:dm,pct:dw>0?Math.round(df/dw*100):0,ffmOK:df>=0};
+}
+function fatColor(p){return p>=70?'var(--green)':p>=50?'var(--orange)':'var(--red)';}
+function fatLabel(p){return p>=70?'保肌良好':p>=50?'肌肉流失偏多':'需要放慢 / 加蛋白';}
+
+/* ===================== 阶段 / 里程碑 ===================== */
+function stageOptions(){
+  return S.stages.map(function(s,i){return '<option value="'+s.id+'"'+(s.id===S.activeStage?' selected':'')+'>'+esc(s.label)+(i===0?'（最早起点）':'')+'</option>';}).join('');
+}
+function setActiveStage(id){S.activeStage=id;save();renderAll();toast('已切换视角');}
+function showStartForm(){const f=$id('startForm');f.style.display=f.style.display==='none'?'block':'none';if(f.style.display==='block'){$id('startDate').value=localTodayStr();const c=curVals();$id('startW').value=c.weight!=null?c.weight:'';}}
+function showMileForm(){const f=$id('mileForm');f.style.display=f.style.display==='none'?'block':'none';if(f.style.display==='block')$id('mileDate').value=localTodayStr();}
+function lastSnap(){const c=curVals();return {weight:c.weight,bf:c.bf,waist:c.waist,ffm:c.ffm};}
+function confirmStart(){
+  const d=$id('startDate').value||localTodayStr();
+  const w=n2($id('startW').value);
+  if(w==null){toast('填一个起点体重');return;}
+  const snap=lastSnap();snap.weight=w;
+  if(snap.bf!=null&&snap.ffm==null)snap.ffm=+(w*(1-snap.bf/100)).toFixed(1);
+  const num=S.stages.length+1;
+  const st={id:uid(),date:d,label:'阶段'+['一','二','三','四','五','六','七','八'][num-1]+' · '+md(d)+' 重新出发',snap:snap};
+  S.stages.push(st);S.activeStage=st.id;save();renderAll();
+  toast('已设为起点 · Day 1');
+}
+function confirmMile(){
+  const d=$id('mileDate').value||localTodayStr();
+  const note=($id('mileNote').value||'').trim()||'一个值得记一下的日子';
+  S.milestones.unshift({id:uid(),date:d,note:note,snap:lastSnap()});
+  save();renderAll();toast('里程碑已记下');
+}
+function delMile(id){if(!confirm('删除这条里程碑？'))return;S.milestones=S.milestones.filter(function(x){return x.id!==id;});save();renderAll();}
+
+/* ===================== 渲染：今日 ===================== */
+function renderToday(){
+  const v=calcView(),today=localTodayStr(),dow=new Date().getDay();
+  /* --- 阶段卡 --- */
+  let h='<div class="card hero"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">'+
+    '<div><div class="sub">当前视角</div><div style="font-size:15px;font-weight:700;margin-top:2px">'+esc(v.st.label)+'</div></div>'+
+    '<div style="text-align:right"><div class="big mono">Day '+v.day+'</div><div class="sub">'+v.st.date+'</div></div></div>'+
+    '<div class="pbar"><i style="width:'+v.pct.toFixed(1)+'%"></i></div>'+
+    '<div class="kv"><span>起点 → 目标</span><b class="mono">'+f1(v.st.snap.weight)+' → '+GOALS.weight+' kg</b></div>'+
+    '<div class="kv"><span>计划线今天</span><b class="mono">'+f1(v.planW)+' kg</b></div>'+
+    '<div class="kv"><span>实际 · 最近一次</span><b class="mono">'+(v.curW!=null?f1(v.curW)+' kg':'未录入')+'</b></div>'+
+    (v.gap!=null?'<div class="kv"><span>与计划线</span><b class="mono" style="color:'+(v.gap<=0.05?'var(--green)':'var(--orange)')+'">'+(Math.abs(v.gap)<0.05?'持平':(v.gap<0?'领先 ':'落后 ')+Math.abs(v.gap).toFixed(1)+' kg')+'</b></div>':'')+
+    '<div class="kv"><span>已减 / 还差</span><b class="mono">'+f1(v.lost)+' / '+f1(v.need)+' kg</b></div>'+
+    (v.daysLeft!=null?'<div class="kv"><span>按 0.4kg/周</span><b class="mono">'+v.daysLeft+' 天 · '+v.eta.replace(/-/g,'/')+'</b></div>':'')+
+    '<div class="hr"></div>'+
+    '<div style="margin-bottom:10px"><span class="lbl">视角 · 随时切回任意起点</span><select class="inp" style="width:100%;padding:8px 10px;font-size:12.5px" onchange="setActiveStage(this.value)">'+stageOptions()+'</select></div>'+
+    '<div class="btnrow"><button class="btn pri sm" onclick="showStartForm()">设为起点</button><button class="btn sm" onclick="showMileForm()">设为里程碑</button></div>'+
+    '<div id="startForm" style="display:none;margin-top:12px;background:var(--card);border-radius:10px;padding:13px">'+
+      '<div class="lbl">新起点 · 只是加一个锚点，历史一条都不会丢</div>'+
+      '<div class="grid2"><div><span class="lbl">日期</span><input type="date" class="inp" id="startDate"></div><div><span class="lbl">当时体重 kg</span><input type="number" step="0.1" class="inp" id="startW" placeholder="例 79.0"></div></div>'+
+      '<div class="note" style="margin:8px 0">体脂 / 腰围 / 去脂自动取最近一次体测，不用填。</div>'+
+      '<button class="btn pri sm" onclick="confirmStart()">确认 · 从这天重新起算</button></div>'+
+    '<div id="mileForm" style="display:none;margin-top:12px;background:var(--card);border-radius:10px;padding:13px">'+
+      '<div class="lbl">里程碑 · 当时的数据会自动存一张快照</div>'+
+      '<div class="grid2"><div><span class="lbl">日期</span><input type="date" class="inp" id="mileDate"></div><div><span class="lbl">一句话</span><input type="text" class="inp" id="mileNote" placeholder="破 75 / 第一次全程引体"></div></div>'+
+      '<button class="btn pri sm" style="margin-top:10px" onclick="confirmMile()">记下来</button></div>'+
+    '</div>';
+  /* 阶段一成就条 */
+  const dw=PHASE1.w0-PHASE1.w1,df=PHASE1.w0*PHASE1.bf0/100-PHASE1.w1*PHASE1.bf1/100;
+  h+='<div class="card" style="padding:14px 18px"><div class="sub">阶段一 · '+md(PHASE1.start)+' → '+md(PHASE1.end)+' · 一直留着</div>'+
+     '<div style="display:flex;align-items:baseline;gap:10px;margin-top:6px"><span class="big mono" style="font-size:24px">−'+dw.toFixed(1)+' kg</span><span class="mini">其中脂肪 '+df.toFixed(1)+' kg（'+Math.round(df/dw*100)+'%）</span></div>'+
+     '<div class="tinyline" style="margin-top:4px">'+f1(PHASE1.w0)+' → '+f1(PHASE1.w1)+' kg · 腰围 '+PHASE1.waist0+' → '+PHASE1.waist1+' cm</div></div>';
+  $id('stageCard').innerHTML=h;
+
+  /* --- 今日课表 --- */
+  const p=planByDay(dow),wk=weekTrainCount();
+  let t='<div class="card"><div class="card-title">今日课表 <span class="pill">本周 '+wk+'/3</span></div>';
+  if(p){
+    const done=S.train.some(function(r){return r.date===today&&r.plan===p.key;});
+    t+='<div style="display:flex;align-items:baseline;gap:9px"><span style="font-size:22px;font-weight:800">'+esc(p.label.split(' · ')[0])+'</span><span class="sub">'+esc(p.focus)+' · '+p.items.length+' 个动作 · 约 40 分钟</span></div>'+
+      '<div class="mini" style="margin-top:8px">主项：<b>'+esc(p.items[0][0])+'</b> · '+esc(p.items[0][1])+'</div>'+
+      '<div class="btnrow" style="margin-top:12px">'+(done?'<button class="btn on sm">今天已完成</button>':'<button class="btn pri sm" onclick="markTrain(\''+p.key+'\')">今天完成 · 点一下</button>')+
+      '<button class="btn sm" onclick="switchMain(\'train\')">看完整课表</button></div>';
+  }else{
+    t+='<div style="font-size:19px;font-weight:700">自由日</div><div class="mini" style="margin-top:6px">有空就踩 20-40 分钟有氧，心率 120-140、腿不酸。不排班、不记录、不考核。</div>'+
+      '<div class="btnrow" style="margin-top:12px"><button class="btn sm" onclick="switchMain(\'train\')">翻课表</button></div>';
+  }
+  t+='</div>';
+  $id('todayPlan').innerHTML=t;
+
+  /* --- 今日待填 --- */
+  const hasBody=S.body.some(function(r){return r.date===today;});
+  const hasMeal=S.meals.some(function(r){return r.date===today;});
+  const kglDone=S.kgl===today;
+  const lastB=bodySorted().length?bodySorted()[bodySorted().length-1].date:null;
+  const lastT=S.train.length?S.train.slice().sort(function(a,b){return a.date.localeCompare(b.date);}).slice(-1)[0].date:null;
+  const trainDone=p?S.train.some(function(r){return r.date===today&&r.plan===p.key;}):false;
+  let d='<div class="card"><div class="card-title">今天还有这些没填</div><div class="btnrow" style="gap:6px">'+
+    '<span class="chip '+(hasBody?'done':'todo')+'" onclick="switchMain(\'body\')">'+(hasBody?'✓':'○')+' 体测</span>'+
+    '<span class="chip '+(hasMeal?'done':'todo')+'" onclick="switchMain(\'diet\')">'+(hasMeal?'✓':'○')+' 饮食</span>'+
+    '<span class="chip '+(kglDone?'done':'todo')+'" onclick="markKgl()">'+(kglDone?'✓':'○')+' 凯格尔</span>'+
+    '<span class="chip '+(trainDone?'done':'todo')+'">'+(trainDone?'✓':(p?'○':'—'))+' 正式组</span></div>'+
+    '<div class="hr"></div><div class="kv"><span>距上次称重</span><b class="mono">'+(lastB?dayDiff(lastB,today)+' 天':'—')+'</b></div>'+
+    '<div class="kv"><span>距上次正式组</span><b class="mono">'+(lastT?dayDiff(lastT,today)+' 天':'—')+'</b></div></div>';
+  $id('todayTodo').innerHTML=d;
+
+  /* --- 凯格尔 --- */
+  $id('kglCard').innerHTML='<div class="card"><div class="card-title">凯格尔 · 每天</div>'+
+    '<div class="mini">3 组 × 10 次，慢收 3-5 秒 / 放松 3-5 秒，掺几次快速收放。挂在刷牙后或洗澡前，不挑时间。</div>'+
+    '<div class="note" style="margin-top:8px;color:var(--orange)">发力时正常呼气，别憋气鼓腹；不用腹肌和臀部代偿，别用排尿中断当训练。</div>'+
+    '<div class="btnrow" style="margin-top:11px">'+(kglDone?'<button class="btn on sm">今天已做</button>':'<button class="btn pri sm" onclick="markKgl()">今天做了</button>')+'</div></div>';
+
+  /* --- 里程碑 --- */
+  const ms=S.milestones.slice().sort(function(a,b){return b.date.localeCompare(a.date);});
+  let m='<div class="card"><div class="card-title">里程碑 · 可以回味</div>';
+  if(!ms.length)m+='<div class="note">还没有记录。</div>';
+  ms.slice(0,6).forEach(function(x){
+    const s=x.snap||{},lost=(s.weight!=null&&v.st.snap.weight!=null)?(v.st.snap.weight-s.weight):null;
+    m+='<div class="mile"><div style="display:flex;justify-content:space-between;gap:8px"><b style="font-size:13px">'+esc(x.note)+'</b>'+
+      '<span class="sub mono">'+x.date+'</span></div>'+
+      '<div class="mini" style="margin-top:4px">'+(s.weight!=null?f1(s.weight)+' kg · 体脂 '+f1(s.bf)+'% · 腰围 '+f1(s.waist)+' cm':'当时未录体测')+
+      (lost!=null?' · 较当前视角起点 −'+f1(lost)+' kg':'')+'</div>'+
+      (!x.fixed?'<span class="tinyline" style="color:var(--text-3);cursor:pointer" onclick="delMile(\''+x.id+'\')">删除</span>':'')+'</div>';
+  });
+  m+='</div>';$id('mileCard').innerHTML=m;
+}
+function weekTrainCount(){
+  const t=localTodayStr(),dow=new Date().getDay()||7,monday=addDays(t,-dow+1),sunday=addDays(monday,6);
+  return S.train.filter(function(r){return r.date>=monday&&r.date<=sunday&&r.plan;}).length;
+}
+
+/* ===================== 渲染：训练 ===================== */
+let curPlanKey=null;
+function setPlanKey(k){curPlanKey=k;renderTrain();}
+function renderTrain(){
+  const dow=new Date().getDay(),todayPlan=planByDay(dow);
+  if(!curPlanKey)curPlanKey=todayPlan?todayPlan.key:'push';
+  const p=PLAN.find(function(x){return x.key===curPlanKey;})||PLAN[0];
+  const today=localTodayStr();
+  let h='<div class="seg">'+PLAN.map(function(x){return '<div class="'+(x.key===p.key?'on':'')+'" onclick="setPlanKey(\''+x.key+'\')">'+x.label+'</div>';}).join('')+'</div>';
+  h+='<div class="card"><div class="card-title">'+esc(p.label)+' <span class="pill">'+esc(p.focus)+'</span></div>'+
+     '<div class="mini" style="margin-bottom:10px"><b>热身</b> '+esc(p.warm)+'</div>'+
+     '<table class="tbl trainTbl"><thead><tr><th>动作</th><th>组 × 次</th><th>负荷</th></tr></thead><tbody>';
+  p.items.forEach(function(it,i){
+    h+='<tr><td class="nm">'+(i+1)+'. '+esc(it[0])+'</td><td class="mono">'+esc(it[1])+'</td><td>'+esc(it[2])+'</td></tr>'+
+       '<tr><td colspan="3" style="padding-top:0;color:var(--text-3);font-size:11px">'+esc(it[3])+'</td></tr>';
+  });
+  h+='</tbody></table><div class="note" style="margin-top:10px">组间休息：主项 90 秒 · 引体 120 秒 · 辅助 60 秒</div>'+
+     '<div class="mini" style="margin-top:6px"><b>冷身</b> '+esc(COOL)+'</div></div>';
+  h+='<div class="card"><div class="card-title">完成 · 只点一下</div>'+
+     '<div class="mini">不用记每个动作的重量和次数。想多说一句就写，不想写直接点完成。</div>'+
+     '<input type="text" class="inp" id="trainNote" placeholder="随手记（可空）例：引体 1/2 行程连拉 4 个" style="margin-top:10px">'+
+     '<div class="btnrow" style="margin-top:10px"><button class="btn pri sm" onclick="markTrain(\''+p.key+'\')">完成 '+esc(p.label.split(' · ')[0])+'</button></div>'+
+     '<div class="hr"></div><div class="kv"><span>本周正式组</span><b class="mono">'+weekTrainCount()+' / 3</b></div></div>';
+  const hist=S.train.slice().sort(function(a,b){return b.date.localeCompare(a.date);}).slice(0,12);
+  h+='<div class="card"><div class="card-title">最近完成</div>';
+  if(!hist.length)h+='<div class="note">阶段一的训练记录导入后会出现在下面。</div>';
+  hist.forEach(function(r){
+    const pn=(PLAN.find(function(x){return x.key===r.plan;})||{}).label||r.plan||r.type||'训练';
+    h+='<div class="kv"><span>'+r.date+' · '+esc(pn)+'</span><span class="sub">'+esc(r.note||'')+'</span></div>';
+  });
+  h+='</div>';
+  h+='<div class="card"><div class="card-title">进阶规则</div><table class="tbl"><tbody>'+
+     PROG.map(function(r){return '<tr><td class="nm">'+esc(r[0])+'</td><td>'+esc(r[1])+' → <b>'+esc(r[2])+'</b></td></tr>';}).join('')+'</tbody></table></div>';
+  h+='<div class="card"><div class="card-title">有氧 · 不进课表</div><div class="mini">其他日子有空就踩 20-40 分钟，心率 120-140、阻力低到腿不酸。不记录、不考核。</div>'+
+     '<div class="hr"></div><div class="fold" onclick="var e=$id(\'arsenalBox\');e.style.display=e.style.display===\'none\'?\'block\':\'none\'">正式组之外 · 随手组武器库（展开）</div>'+
+     '<div id="arsenalBox" style="display:none;margin-top:8px" class="mini">'+
+     '<b>单杠系</b>：悬垂举膝 ×8-10 · 悬垂 20 秒 · 拉一半 ×3 · 跳上慢放 ×1<br>'+
+     '<b>地板系</b>：俯卧撑 ×6-8 · 死虫式 ×8/侧<br>'+
+     '<b>站着做</b>：站姿提膝 ×20 · 自重深蹲 ×15<br>'+
+     '<span style="color:var(--orange)">不力竭，做到一半就停。真空腹要屏气，耳朵恢复期先跳过。</span></div></div>';
+  h+='<div class="card"><div class="card-title">耳朵这条硬线</div><div class="mini">全程不憋气，发力呼气、还原吸气；不做头低于心脏的动作。出现耳鸣、听力波动、眩晕立刻停。</div></div>';
+  $id('trainArea').innerHTML=h;
+}
+function markTrain(key){
+  const today=localTodayStr();
+  const note=($id('trainNote')&&$id('trainNote').value||'').trim();
+  const i=S.train.findIndex(function(r){return r.date===today&&r.plan===key;});
+  if(i>=0)S.train[i].note=note||S.train[i].note;
+  else S.train.push({date:today,plan:key,note:note});
+  save();renderAll();toast('已记录 · 本周 '+weekTrainCount()+'/3');
+}
+function markKgl(){S.kgl=localTodayStr();save();renderAll();toast('已记下');}
+
+/* ===================== 渲染：饮食 ===================== */
+function renderDiet(){
+  const today=localTodayStr();
+  const cur=S.meals.find(function(r){return r.date===today;})||{date:today,b:'',l:'',d:'',s:'',cal:'',p:''};
+  let h='<div class="card"><div class="card-title">今天吃了什么 <span class="pill">选填</span></div>'+
+    '<div class="grid2"><div><span class="lbl">日期</span><input type="date" class="inp" id="mealDate" value="'+today+'"></div><div></div></div>'+
+    '<div style="margin-top:10px"><span class="lbl">早餐</span><input type="text" class="inp" id="mealB" placeholder="4蛋+燕麦+美式" value="'+esc(cur.b)+'"></div>'+
+    '<div style="margin-top:8px"><span class="lbl">午餐</span><input type="text" class="inp" id="mealL" placeholder="一句话就行" value="'+esc(cur.l)+'"></div>'+
+    '<div style="margin-top:8px"><span class="lbl">晚餐</span><input type="text" class="inp" id="mealD" placeholder="一句话就行" value="'+esc(cur.d)+'"></div>'+
+    '<div style="margin-top:8px"><span class="lbl">加餐 / 补剂</span><input type="text" class="inp" id="mealS" placeholder="蛋白粉 2 勺" value="'+esc(cur.s)+'"></div>'+
+    '<div class="grid2" style="margin-top:8px"><div><span class="lbl">热量 kcal（可空）</span><input type="number" class="inp" id="mealCal" value="'+esc(cur.cal)+'"></div>'+
+    '<div><span class="lbl">蛋白 g（可空）</span><input type="number" class="inp" id="mealP" value="'+esc(cur.p)+'"></div></div>'+
+    '<button class="btn pri sm" style="margin-top:12px" onclick="saveMeal()">保存今天</button></div>';
+  const recent=S.meals.slice().sort(function(a,b){return b.date.localeCompare(a.date);}).slice(0,7);
+  const withP=S.meals.filter(function(r){return r.p!=null&&r.p!=='';}).slice(-7);
+  h+='<div class="card"><div class="card-title">近 7 天</div>'+
+     '<div class="kv"><span>蛋白均值</span><b class="mono">'+(withP.length?(withP.reduce(function(s,r){return s+ +r.p;},0)/withP.length).toFixed(0)+' g':'—')+'</b></div>';
+  if(!recent.length)h+='<div class="note">阶段一饮食记录导入后会出现在下面。</div>';
+  recent.forEach(function(r){
+    h+='<div style="background:var(--inset);border-radius:9px;padding:10px 12px;margin-top:8px"><div style="display:flex;justify-content:space-between"><b style="font-size:12px">'+r.date+'</b>'+
+      '<span class="sub mono">'+(r.cal!=null&&r.cal!==''?r.cal+' kcal':'')+(r.p!=null&&r.p!==''?' · '+r.p+'g 蛋白':'')+'</span></div>'+
+      '<div class="tinyline" style="margin-top:4px;color:var(--text-2)">'+[r.b?'早 '+r.b:'',r.l?'午 '+r.l:'',r.d?'晚 '+r.d:'',r.s?'加 '+r.s:''].filter(Boolean).map(esc).join(' · ')+'</div></div>';
+  });
+  h+='</div>';
+  $id('dietArea').innerHTML=h;
+}
+function saveMeal(){
+  const d=$id('mealDate').value||localTodayStr();
+  const o={date:d,b:($id('mealB').value||'').trim(),l:($id('mealL').value||'').trim(),d:($id('mealD').value||'').trim(),s:($id('mealS').value||'').trim(),
+    cal:n2($id('mealCal').value),p:n2($id('mealP').value)};
+  const i=S.meals.findIndex(function(r){return r.date===d;});
+  if(i>=0)S.meals[i]=o;else S.meals.push(o);
+  save();renderAll();toast('饮食已记 '+md(d));
+}
+
+/* ===================== 渲染：体测 ===================== */
+function spark(vals,color){
+  const a=vals.filter(function(x){return x!=null;});
+  if(a.length<2)return '<div class="note">至少两次记录才画得出曲线</div>';
+  const mn=Math.min.apply(null,a),mx=Math.max.apply(null,a),rg=(mx-mn)||1;
+  const W=320,H=76,pts=a.map(function(v,i){return [10+i*(W-20)/(a.length-1),H-8-(v-mn)/rg*(H-18)];});
+  const line=pts.map(function(p,i){return (i?'L':'M')+p[0].toFixed(1)+' '+p[1].toFixed(1);}).join(' ');
+  return '<svg viewBox="0 0 '+W+' '+H+'" width="100%" height="76" preserveAspectRatio="none">'+
+    '<path d="'+line+' L'+pts[pts.length-1][0].toFixed(1)+' '+H+' L'+pts[0][0].toFixed(1)+' '+H+' Z" fill="'+color+'" opacity="0.10"/>'+
+    '<path d="'+line+'" fill="none" stroke="'+color+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'+
+    pts.map(function(p){return '<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="2" fill="'+color+'"/>';}).join('')+'</svg>';
+}
+function renderBody(){
+  const today=localTodayStr(),v=calcView(),c=v.last;
+  const pool=v.pool.slice().sort(function(a,b){return a.date.localeCompare(b.date);});
+  let h='<div class="card"><div class="card-title">记一次 <span class="pill">留空的不影响</span></div>'+
+    '<div class="grid2"><div><span class="lbl">日期</span><input type="date" class="inp" id="bDate" value="'+today+'"></div><div><span class="lbl">体重 kg</span><input type="number" step="0.1" class="inp" id="bW" placeholder="'+(c.weight!=null?c.weight:'例 79.0')+'"></div></div>'+
+    '<div class="grid2" style="margin-top:8px"><div><span class="lbl">体脂率 %</span><input type="number" step="0.1" class="inp" id="bBf" placeholder="'+(c.bf!=null?c.bf:'例 27.0')+'"></div>'+
+    '<div><span class="lbl">腰围 cm</span><input type="number" step="0.1" class="inp" id="bWaist" placeholder="'+(c.waist!=null?c.waist:'例 86')+'"></div></div>'+
+    '<div class="grid2" style="margin-top:8px"><div><span class="lbl">去脂体重 kg（可空，自动算）</span><input type="number" step="0.1" class="inp" id="bFfm" placeholder="体重×(1−体脂%)"></div>'+
+    '<div><span class="lbl">备注（可空）</span><input type="text" class="inp" id="bNote" placeholder="空腹晨测"></div></div>'+
+    '<div class="fold" onclick="var e=$id(\'dimBox\');e.style.display=e.style.display===\'none\'?\'block\':\'none\'">＋ 更多围度</div>'+
+    '<div id="dimBox" style="display:none"><div class="grid4">'+
+      ['臀围','胸围','大腿','上臂'].map(function(n,i){return '<div><span class="lbl">'+n+' cm</span><input type="number" step="0.1" class="inp" id="bDim'+i+'"></div>';}).join('')+'</div></div>'+
+    '<button class="btn pri sm" style="margin-top:10px" onclick="saveBodyForm()">保存这次</button></div>';
+
+  /* 目标卡：大数字=当前值 */
+  h+='<div class="card"><div class="card-title">当前 / 目标</div><div class="grid2">'+
+    cell('体重',c.weight,GOALS.weight,'kg',true)+cell('体脂率',c.bf,GOALS.bf,'%',true)+
+    cell('腰围',c.waist,GOALS.waist,'cm',true)+cell('去脂体重',c.ffm,GOALS.ffm,'kg',false)+'</div>'+
+    '<div class="note" style="margin-top:10px">大数字是当前值，小字是目标。走势与达成率按近 7 次均值算，起点和里程碑用当次实测。</div></div>';
+
+  /* 曲线 */
+  const sm=smooth7(pool,'weight');
+  h+='<div class="card"><div class="card-title">体重走势 · 近 7 次均值</div>'+spark(sm,'#007AFF')+
+    '<div class="kv"><span>区间</span><b class="mono">'+(pool.length?f1(pool[0].weight)+' → '+f1(pool[pool.length-1].weight)+' kg':'—')+'</b></div>'+
+    '<div class="hr"></div><div class="sub">体脂率</div>'+spark(pool.map(function(r){return r.bf;}),'#FF9500')+
+    '<div class="hr"></div><div class="sub">腰围</div>'+spark(pool.map(function(r){return r.waist;}),'#AF52DE')+'</div>';
+
+  /* 脂肪 / 去脂分解 */
+  const wRec=pool.filter(function(r){return r.weight!=null&&r.bf!=null;});
+  let f='<div class="card"><div class="card-title">掉的里面，多少是脂肪</div>';
+  const wins=lossWindows(wRec,10,0.5);
+  if(wins.length){
+    const o=wins[wins.length-1],p=Math.max(0,Math.min(100,o.df/o.dw*100)),color=fatColor(p);
+    f+='<div class="kv"><span>'+md(o.a.date)+' → '+md(o.b.date)+'（'+dayDiff(o.a.date,o.b.date)+' 天）</span><b class="mono">'+f1(o.dw)+' kg</b></div>'+
+      '<div class="fbar"><i style="width:'+p+'%;background:'+color+'"></i><i style="width:'+(100-p)+'%;background:var(--inset)"></i></div>'+
+      '<div class="kv"><span>脂肪 '+f1(o.df)+' kg</span><b style="color:'+color+';font-size:13px">'+Math.round(p)+'% · '+fatLabel(p)+'</b></div>'+
+      '<div class="kv"><span>去脂 '+f1(o.dw-o.df)+' kg</span><span class="sub">≥70% 算保肌良好</span></div>';
+  }else f+='<div class="note">需要间隔 10 天以上、减重超过 0.5kg 的两条体脂记录才算得准。单次称重的误差就有这个量级。</div>';
+  f+='</div>';h+=f;
+
+  /* 记录列表 + 导入导出 */
+  h+='<div class="card"><div class="card-title">记录 <span class="pill">'+S.body.length+' 条</span></div>'+
+     '<div class="btnrow"><button class="btn sm" onclick="$id(\'importFile\').click()">导入阶段一数据</button>'+
+     '<button class="btn sm" onclick="exportBackup()">导出备份</button></div>'+
+     '<div class="note" style="margin-top:8px">所有数据只存在这台设备的浏览器里，不上传。换设备或清缓存前记得导出。</div><div class="hr"></div>';
+  pool.slice().reverse().slice(0,12).forEach(function(r){
+    h+='<div class="kv"><span>'+r.date+(r.note?' · '+esc(r.note):'')+'</span><b class="mono">'+(r.weight!=null?f1(r.weight)+' kg':'—')+(r.bf!=null?' · '+f1(r.bf)+'%':'')+(r.waist!=null?' · '+f1(r.waist)+'cm':'')+'</b></div>';
+  });
+  h+='</div>';
+  $id('bodyArea').innerHTML=h;
+}
+function cell(label,cur,goal,unit,lowerBetter){
+  const diff=cur!=null?(lowerBetter?cur-goal:goal-cur):null;
+  const txt=esc(label);
+  let tail='';
+  if(cur!=null){
+    if(Math.abs(diff)<0.05)tail='已达标';
+    else if(lowerBetter)tail=diff>0?'还差 '+f1(diff)+unit:'已低于目标 '+f1(-diff)+unit;
+    else tail=diff>0?'还差 '+f1(diff)+unit:'高于目标 '+f1(-diff)+unit;
+  }else tail='目标 '+goal+unit;
+  return '<div class="goal-item"><div class="goal-label">'+txt+'</div><div class="goal-val mono">'+(cur!=null?f1(cur):'—')+'<span style="font-size:12px;font-weight:500;color:var(--text-3)"> '+unit+'</span></div>'+
+    '<div class="sub">'+tail+'</div></div>';
+}
+function lossWindows(wRec,minDays,minLoss){
+  const out=[];
+  if(!wRec.length)return out;
+  let base=wRec[0];
+  for(let i=1;i<wRec.length;i++){
+    const b=wRec[i],dw=base.weight-b.weight;
+    if(dw>=minLoss&&dayDiff(base.date,b.date)>=minDays){out.push({a:base,b:b,dw:dw,df:base.weight*base.bf/100-b.weight*b.bf/100});base=b;}
+  }
+  return out;
+}
+function smooth7(pool,field){
+  const a=pool.filter(function(r){return r[field]!=null&&r[field]!=='';});
+  return a.map(function(_,i){const w=a.slice(Math.max(0,i-6),i+1);return w.reduce(function(s,r){return s+ +r[field];},0)/w.length;});
+}
+function saveBodyForm(){
+  const d=$id('bDate').value||localTodayStr();
+  const o={date:d};
+  [['weight','bW'],['bf','bBf'],['waist','bWaist'],['ffm','bFfm']].forEach(function(p){const v=n2($id(p[1]).value);if(v!=null)o[p[0]]=v;});
+  const note=($id('bNote').value||'').trim();if(note)o.note=note;
+  if(o.ffm==null&&o.weight!=null&&o.bf!=null)o.ffm=+(o.weight*(1-o.bf/100)).toFixed(1);
+  const dims={};['hip','chest','thigh','armRelax'].forEach(function(k,i){const v=n2($id('bDim'+i).value);if(v!=null)dims[k]=v;});
+  if(Object.keys(dims).length){dims.date=d;const j=S.dims.findIndex(function(r){return r.date===d;});if(j>=0)S.dims[j]=Object.assign({},S.dims[j],dims);else S.dims.push(dims);}
+  if(Object.keys(o).length===1){toast('至少填一个数');return;}
+  const i=S.body.findIndex(function(r){return r.date===d;});
+  if(i>=0)S.body[i]=Object.assign({},S.body[i],o);else S.body.push(o);
+  save();renderAll();toast('已记录 '+md(d));
+}
+function exportBackup(){
+  const blob=new Blob([JSON.stringify(S,null,1)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='wb2_backup_'+localTodayStr().replace(/-/g,'')+'.json';document.body.appendChild(a);a.click();
+  setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},1200);toast('备份已导出');
+}
+function doImport(e){
+  const f=e.target.files&&e.target.files[0];if(!f)return;
+  const rd=new FileReader();
+  rd.onload=function(){
+    try{
+      const d=JSON.parse(rd.result);
+      if(d.type==='wb2_backup'||d.stages){
+        if(confirm('这是完整备份，会覆盖当前工作台数据。继续？')){S=Object.assign(defaultState(),d);save();renderAll();toast('备份已恢复');}
+        e.target.value='';return;
+      }
+      let cnt=0;
+      ['body','meals','train','dims'].forEach(function(k){
+        const arr=Array.isArray(d[k])?d[k]:[];const exist=S[k];
+        arr.forEach(function(r){
+          if(!r||!r.date)return;
+          const i=exist.findIndex(function(x){return x.date===r.date;});
+          if(i>=0)exist[i]=Object.assign({},r,exist[i]);else{exist.push(Object.assign({},r));cnt++;}
+        });
+      });
+      S.imported=true;save();renderAll();
+      toast('导入完成 · 新增 '+cnt+' 条');
+    }catch(err){toast('文件读不出来，换一个试试');}
+    e.target.value='';
+  };
+  rd.readAsText(f);
+}
+
+/* ===================== 渲染：分析 ===================== */
+function renderAnalysis(){
+  const v=calcView(),sp=splitLoss(v.st,v.last);
+  let h='<div class="card"><div class="card-title">'+esc(v.st.label)+' · 减重分解</div>';
+  if(sp){
+    const fp=Math.max(0,Math.min(100,sp.pct));
+    h+='<div style="display:flex;align-items:baseline;gap:10px"><span class="big mono">−'+f1(sp.dw)+'</span><span class="sub">kg</span></div>'+
+      '<div class="fbar"><i style="width:'+fp+'%;background:'+fatColor(sp.pct)+'"></i><i style="width:'+(100-fp)+'%;background:var(--inset)"></i></div>'+
+      '<div class="kv"><span>脂肪 '+f1(sp.df)+' kg</span><b class="mono" style="color:'+fatColor(sp.pct)+'">'+sp.pct+'%</b></div>'+
+      '<div class="kv"><span>去脂 '+f1(sp.dm)+' kg</span><span class="sub">'+fatLabel(sp.pct)+'</span></div>'+
+      '<div class="note" style="margin-top:6px">口径：视角起点用当次实测，当前用最近一次实测；走势与达成率用近 7 次均值。</div>';
+  }else h+='<div class="note">起点之后还没有体测记录。周六早上量完，数据就在这里。</div>';
+  h+='</div>';
+
+  /* 计划线 vs 实际 */
+  h+='<div class="card"><div class="card-title">计划线 vs 实际</div><div class="kv"><span>今天计划应是</span><b class="mono">'+f1(v.planW)+' kg</b></div>'+
+     '<div class="kv"><span>实际 · 最近一次</span><b class="mono">'+(v.curW!=null?f1(v.curW)+' kg':'—')+'</b></div>'+
+     (v.gap!=null?'<div class="kv"><span>差值</span><b class="mono" style="color:'+(v.gap<=0.05?'var(--green)':'var(--orange)')+'">'+(Math.abs(v.gap)<0.05?'持平':(v.gap<0?'领先 ':'落后 ')+Math.abs(v.gap).toFixed(1)+' kg')+'</b></div>':'')+
+     '<div class="kv"><span>目标进度</span><b class="mono">'+v.pct.toFixed(0)+'%</b></div>'+
+     '<div class="pbar"><i style="width:'+v.pct.toFixed(1)+'%"></i></div>'+
+     '<div class="note">0.4 kg/周。不亮红灯、不判失败，数字自己会走。</div></div>';
+
+  /* 每次称重的脂肪占比 */
+  const wRec=v.pool.filter(function(r){return r.weight!=null&&r.bf!=null;});
+  h+='<div class="card"><div class="card-title">每次变化的脂肪占比</div>';
+  if(lossWindows(wRec,10,0.5).length){
+    const wins2=lossWindows(wRec,10,0.5).slice(-6);
+    wins2.forEach(function(o){
+      const p=Math.max(0,Math.min(100,o.df/o.dw*100));
+      h+='<div style="display:flex;align-items:center;gap:9px;margin:7px 0"><span class="sub mono" style="width:74px">'+md(o.a.date)+'→'+md(o.b.date)+'</span>'+
+        '<div style="flex:1;height:8px;background:var(--inset);border-radius:5px;overflow:hidden"><i style="display:block;height:100%;width:'+p+'%;background:'+fatColor(p)+'"></i></div>'+
+        '<b class="mono" style="font-size:11.5px;width:38px;text-align:right">'+Math.round(p)+'%</b></div>';
+    });
+    h+='<div class="note" style="margin-top:8px">≥70% 绿（保肌良好）· 50-70% 橙 · &lt;50% 红。</div>';
+  }else h+='<div class="note">至少两次同时有体重和体脂的记录。</div>';
+  h+='</div>';
+
+  /* 阶段列表：可追溯 */
+  h+='<div class="card"><div class="card-title">所有起点 · 点一下切视角</div>';
+  S.stages.forEach(function(s){
+    const c=curVals(bodySorted().filter(function(r){return r.date>=s.date;}));
+    const lost=c.weight!=null?s.snap.weight-c.weight:null;
+    const days=dayDiff(s.date,localTodayStr())+1;
+    h+='<div class="mile" style="border-left-color:'+(s.id===S.activeStage?'var(--blue)':'var(--bdr2)')+'" onclick="setActiveStage(\''+s.id+'\')">'+
+      '<div style="display:flex;justify-content:space-between"><b style="font-size:13px">'+esc(s.label)+(s.id===S.activeStage?' · 当前':'')+'</b><span class="sub mono">Day '+days+'</span></div>'+
+      '<div class="mini">'+s.date+' 起 · 起点 '+f1(s.snap.weight)+' kg'+(lost!=null?' · 已减 '+f1(lost)+' kg':'')+'</div></div>';
+  });
+  h+='<div class="note">设新起点不会覆盖任何东西，随时切回最早那个看全程。</div></div>';
+
+  /* 里程碑时间线 */
+  const ms=S.milestones.slice().sort(function(a,b){return b.date.localeCompare(a.date);});
+  h+='<div class="card"><div class="card-title">里程碑时间线</div>';
+  if(!ms.length)h+='<div class="note">还没有。</div>';
+  ms.forEach(function(x){
+    const s=x.snap||{};
+    h+='<div class="mile"><div style="display:flex;justify-content:space-between"><b style="font-size:13px">'+esc(x.note)+'</b><span class="sub mono">'+x.date+'</span></div>'+
+      '<div class="mini">'+(s.weight!=null?f1(s.weight)+' kg · '+f1(s.bf)+'% · 腰 '+f1(s.waist)+' cm':'当时未录体测')+'</div></div>';
+  });
+  h+='</div>';
+  $id('analysisArea').innerHTML=h;
+}
+
+/* ===================== 渲染：生活（愿望 / 补剂） ===================== */
+function renderWish(){
+  let html='<div class="card" style="margin-top:12px"><div class="card-title">🎯 愿望清单</div><div class="note" style="margin-bottom:12px">想买的、计划买的，想好了再下手</div>';
+  if(!S.wish.length)html+='<div class="note" style="text-align:center;padding:20px 0">清单是空的</div>';
+  S.wish.forEach(function(it,i){
+    const bc=it.priority==='高'?'var(--red)':it.priority==='中'?'var(--orange)':'var(--text-3)';
+    html+='<div style="background:var(--inset);border-radius:10px;padding:14px;margin-bottom:10px;border-left:4px solid '+bc+'">'+
+      '<div style="display:flex;align-items:flex-start;gap:9px"><span style="font-size:20px">'+(it.icon||'•')+'</span><div style="flex:1;min-width:0">'+
+      '<div style="font-size:14px;font-weight:600">'+esc(it.name)+'</div>'+
+      '<div style="font-size:11px;color:var(--text-3);margin-top:2px">'+(it.price?'预算 ¥'+esc(it.price):'')+(it.timing?' · '+esc(it.timing):'')+'</div>'+
+      (it.note?'<div style="font-size:11.5px;color:var(--text-2);line-height:1.65;margin-top:6px">'+esc(it.note)+'</div>':'')+'</div>'+
+      '<div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px"><span style="font-size:10px;padding:2px 8px;border-radius:9px;background:rgba(0,0,0,.05);color:'+bc+';font-weight:600">'+esc(it.status||'待定')+'</span>'+
+      '<span onclick="delWish('+i+')" style="font-size:11px;color:var(--text-3);cursor:pointer">删除</span></div></div></div>';
+  });
+  html+='<button class="btn sm" style="width:100%;border-style:dashed" onclick="toggleWishForm()">＋ 手动添加一项</button>'+
+    '<div id="wishForm" style="display:none;margin-top:12px;background:var(--inset);border-radius:10px;padding:14px">'+
+    '<div style="margin-bottom:8px"><span class="lbl">名称</span><input type="text" class="inp" id="wName" placeholder="想买的东西"></div>'+
+    '<div class="grid2"><div><span class="lbl">预算</span><input type="text" class="inp" id="wPrice"></div><div><span class="lbl">时机</span><input type="text" class="inp" id="wTiming"></div></div>'+
+    '<div style="margin-top:8px"><span class="lbl">备注</span><textarea class="inp" id="wNote" placeholder="型号、渠道、注意事项"></textarea></div>'+
+    '<button class="btn pri sm" style="margin-top:10px" onclick="addWish()">加入清单</button></div></div>';
+  $id('wishArea').innerHTML=html;
+}
+function toggleWishForm(){const f=$id('wishForm');f.style.display=f.style.display==='none'?'block':'none';}
+function addWish(){
+  const name=($id('wName').value||'').trim();if(!name){toast('填个名称');return;}
+  S.wish.unshift({icon:'🛒',name:name,status:'待购入',priority:'中',price:($id('wPrice').value||'').trim(),note:($id('wNote').value||'').trim(),timing:($id('wTiming').value||'').trim()});
+  save();renderWish();toast('已加入清单');
+}
+function delWish(i){if(!confirm('删除「'+S.wish[i].name+'」？'))return;S.wish.splice(i,1);save();renderWish();}
+function renderSupp(){
+  const block=function(title,list,accent){
+    let h2='<div class="card"><div class="card-title">'+title+'</div>';
+    list.forEach(function(s){h2+='<div class="supp-item"><div><div class="sn">'+s.n+'</div>'+(s.d?'<div class="sd">'+s.d+'</div>':'')+'</div><div class="sr"'+(accent?' style="color:'+accent+'"':'')+'>'+s.r+'</div></div>';});
+    return h2+'</div>';
+  };
+  $id('suppArea').innerHTML=block('✅ 继续吃 · 吃完补货',SUPP_KEEP,'var(--green)')+block('🤔 可留可去 · 吃完看情况',SUPP_MAYBE)+block('❌ 吃完不补',SUPP_DROP,'var(--red)')+
+    '<div class="card"><div class="card-title">⚠️ 他达拉非 5mg</div><div class="mini">这是处方药，不是补剂。停不停、继续不继续，问开药的医生，别自己决定。</div></div>';
+}
+
+/* ===================== 导航 / 启动 ===================== */
+function renderAll(){renderToday();renderTrain();renderDiet();renderBody();renderAnalysis();renderWish();renderSupp();}
+function switchMain(name){
+  document.querySelectorAll('.main-tab').forEach(function(el){el.classList.toggle('active',el.dataset.main===name);});
+  document.querySelectorAll('.main-panel').forEach(function(el){el.classList.toggle('active',el.id==='panel-'+name);});
+  if(name==='today')renderToday();
+  if(name==='train')renderTrain();
+  if(name==='diet')renderDiet();
+  if(name==='body')renderBody();
+  if(name==='analysis')renderAnalysis();
+  if(name==='life'){renderWish();renderSupp();}
+  if(name==='paipan'){_pzSchedule=null;renderPZRecommend();renderPZDetail();renderPZInfo();}
+  window.scrollTo(0,0);
+}
+function switchSub(name){
+  if(name==='pz-recommend')renderPZRecommend();else if(name==='pz-detail')renderPZDetail();else if(name==='pz-info')renderPZInfo();
+  document.querySelectorAll('.sub-tab').forEach(function(el){el.classList.toggle('active',el.dataset.sub===name);});
+  document.querySelectorAll('.sub-panel').forEach(function(el){el.classList.toggle('active',el.id==='sub-'+name);});
+}
+function init(){
+  const now=new Date();
+  $id('headerDate').textContent=localTodayStr()+' 周'+'日一二三四五六'[now.getDay()];
+  renderAll();
+  renderPZRecommend();renderPZDetail();renderPZInfo();
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+</script>
+</body>
+</html>

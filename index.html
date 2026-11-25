@@ -9,7 +9,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <title>减脂二阶段 · 工作台</title>
 <script>
-(function(){var VER='20261125b';try{var s=sessionStorage.getItem('_wb2_ver');if(s&&s!==VER){sessionStorage.removeItem('_wb2_ver');location.reload(true);return;}sessionStorage.setItem('_wb2_ver',VER);}catch(e){}})();
+(function(){var VER='20261125c';try{var s=sessionStorage.getItem('_wb2_ver');if(s&&s!==VER){sessionStorage.removeItem('_wb2_ver');location.reload(true);return;}sessionStorage.setItem('_wb2_ver',VER);}catch(e){}})();
 </script>
 <style>
 
@@ -1175,7 +1175,7 @@ function renderDiet(){
       '<span class="mono" style="font-size:12.5px;font-weight:700;white-space:nowrap">'+(av!=null?Math.round(av).toLocaleString()+' kcal':'未记录')+'</span></div>'+
       '<div class="wbar"><i style="width:'+(av!=null?Math.max(3,av/mx*100):0)+'%;background:'+(i===0?'linear-gradient(90deg,var(--blue),var(--purple))':'linear-gradient(90deg,#9AA6FF,#C6AEFF)')+'"></i></div>'+
       '<div class="tinyline">合计 '+(o.cal?Math.round(o.cal).toLocaleString()+' kcal':'—')+' · '+o.days+' 天'+
-        (o.pDays?' · 蛋白 '+Math.round(o.p/o.pDays)+'g':'')+(o.cDays?' · 碳水 '+Math.round(o.carb/o.cDays)+'g':'')+
+        (o.pDays?' · 蛋白 '+Math.round(o.p/o.pDays)+'g/天':'')+(o.cDays?' · 碳水 '+Math.round(o.carb/o.cDays)+'g/天':'')+
         (dd!=null?' · <span style="color:'+(dd>0?'var(--orange)':'var(--green)')+'">'+(dd>0?'↑':'↓')+Math.abs(Math.round(dd))+' kcal/天</span>':'')+'</div></div>';
   });
   h+='</div>';

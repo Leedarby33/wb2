@@ -11,7 +11,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <title>减脂二阶段 · 工作台</title>
 <script>
-(function(){var VER='20261126b';try{var s=sessionStorage.getItem('_wb2_ver');if(s&&s!==VER){sessionStorage.removeItem('_wb2_ver');location.reload(true);return;}sessionStorage.setItem('_wb2_ver',VER);}catch(e){}})();
+(function(){var VER='20261126d';try{var s=sessionStorage.getItem('_wb2_ver');if(s&&s!==VER){sessionStorage.removeItem('_wb2_ver');location.reload(true);return;}sessionStorage.setItem('_wb2_ver',VER);}catch(e){}})();
 (function(){try{var t=localStorage.getItem('wb2_theme')||'auto';var d=t==='dark'||(t==='auto'&&window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches);var h=document.documentElement;if(d)h.className+=' dark';h.style.colorScheme=d?'dark':'light';}catch(e){}})();
 </script>
 <style>
@@ -288,6 +288,7 @@ html.dark .jige-chip.normal{background:rgba(59,220,159,.16);border-color:rgba(59
     <div id="stageCard"></div>
     <div id="todayPlan"></div>
     <div id="todayTodo"></div>
+    <div id="backupCard"></div>
     <div id="kglCard"></div>
     <div id="mileCard"></div>
   </div>
@@ -933,11 +934,11 @@ function defaultState(){
     stages:[{id:'s1',date:PHASE1.start,label:'阶段一 · 全程',snap:{weight:PHASE1.w0,bf:PHASE1.bf0,waist:PHASE1.waist0,ffm:PHASE1.ffm0},fixed:true}],
     activeStage:'s1',
     milestones:[{id:'m1',date:PHASE1.end,note:'阶段一收官',snap:{weight:PHASE1.w1,bf:PHASE1.bf1,waist:PHASE1.waist1,ffm:PHASE1.ffm1},fixed:true}],
-    body:[],meals:[],train:[],dims:[],kgl:'',wish:WISH_SEED.slice(),imported:false
+    body:[],meals:[],train:[],dims:[],kgl:'',wish:WISH_SEED.slice(),imported:false,lastBackup:''
   };
 }
 function load(){
-  try{const a=JSON.parse(localStorage.getItem(KEY)||'null');if(a&&a.stages&&a.stages.length){a.wish=a.wish||WISH_SEED.slice();return a;}}catch(e){}
+  try{const a=JSON.parse(localStorage.getItem(KEY)||'null');if(a&&a.stages&&a.stages.length){a.wish=a.wish||WISH_SEED.slice();a.lastBackup=a.lastBackup||'';return a;}}catch(e){}
   const d=defaultState();try{localStorage.setItem(KEY,JSON.stringify(d));}catch(e){}return d;
 }
 let S=load();
@@ -961,7 +962,11 @@ function avg7(field,pool){
   if(!a.length)return null;
   return a.reduce(function(s,r){return s+ +r[field];},0)/a.length;
 }
-function viewBody(){const st=activeStage();return bodySorted().filter(function(r){return r.date>=st.date;});}
+function viewFrom(){return activeStage().date;}
+function inView(d){return d>=viewFrom();}
+function viewBody(){return bodySorted().filter(function(r){return inView(r.date);});}
+function viewMeals(){return S.meals.filter(function(r){return inView(r.date);});}
+function viewTrain(){return S.train.filter(function(r){return inView(r.date);});}
 function calcView(){
   const st=activeStage(),today=localTodayStr();
   const day=Math.max(1,dayDiff(st.date,today)+1);
@@ -1090,8 +1095,9 @@ function renderToday(){
   const hasMeal=S.meals.some(function(r){return r.date===today&&r.cal!=null&&r.cal!=='';});
   const wks0=weekList(),cw0=wks0[0],pv0=wks0[1],ca0=cw0?weekAvg(cw0):null,pb0=pv0?weekAvg(pv0):null;
   const kglDone=S.kgl===today;
-  const lastB=bodySorted().length?bodySorted()[bodySorted().length-1].date:null;
-  const lastT=S.train.length?S.train.slice().sort(function(a,b){return a.date.localeCompare(b.date);}).slice(-1)[0].date:null;
+  const pBody=viewBody(),pTrain=viewTrain();
+  const lastB=pBody.length?pBody[pBody.length-1].date:null;
+  const lastT=pTrain.length?pTrain.slice().sort(function(a,b){return a.date.localeCompare(b.date);}).slice(-1)[0].date:null;
   const trainDone=p?S.train.some(function(r){return r.date===today&&r.plan===p.key;}):false;
   let d='<div class="card"><div class="card-title">今天还有这些没填</div><div class="btnrow" style="gap:6px">'+
     '<span class="chip '+(hasBody?'done':'todo')+'" onclick="switchMain(\'body\')">'+(hasBody?'✓':'○')+' 体测</span>'+
@@ -1100,7 +1106,9 @@ function renderToday(){
     '<span class="chip '+(trainDone?'done':'todo')+'">'+(trainDone?'✓':(p?'○':'—'))+' 正式组</span></div>'+
     '<div class="hr"></div><div class="kv"><span>距上次称重</span><b class="mono">'+(lastB?dayDiff(lastB,today)+' 天':'—')+'</b></div>'+
     '<div class="kv"><span>距上次正式组</span><b class="mono">'+(lastT?dayDiff(lastT,today)+' 天':'—')+'</b></div>'+
-    '<div class="kv"><span>本周日均热量</span><b class="mono">'+(ca0!=null?Math.round(ca0).toLocaleString()+' kcal'+(pb0!=null?' · '+(ca0>pb0?'↑':'↓')+Math.abs(Math.round(ca0-pb0)):''):'—')+'</b></div></div>';
+    '<div class="kv"><span>本周日均热量</span><b class="mono">'+(ca0!=null?Math.round(ca0).toLocaleString()+' kcal'+(pb0!=null?' · '+(ca0>pb0?'↑':'↓')+Math.abs(Math.round(ca0-pb0)):''):'—')+'</b></div>'+
+    '<div class="kv"><span>距上次备份</span><b class="mono" style="color:'+((S.lastBackup&&dayDiff(S.lastBackup,today)<=7)?'var(--green)':'var(--orange)')+'">'+
+      (S.lastBackup?(dayDiff(S.lastBackup,today)<=0?'今天':dayDiff(S.lastBackup,today)+' 天前'):'从未')+'</b></div></div>';
   $id('todayTodo').innerHTML=d;
 
   /* --- 凯格尔 --- */
@@ -1121,10 +1129,24 @@ function renderToday(){
       (!x.fixed?'<span class="tinyline" style="color:var(--text-3);cursor:pointer" onclick="delMile(\''+x.id+'\')">删除</span>':'')+'</div>';
   });
   m+='</div>';$id('mileCard').innerHTML=m;
+
+  /* --- 数据备份 --- */
+  $id('backupCard').innerHTML=backupCardHtml();
+}
+function backupCardHtml(){
+  const today=localTodayStr(),lb=S.lastBackup,d=lb?dayDiff(lb,today):null;
+  const state=!lb?'从未备份':(d<=0?'今天已备份':d+' 天前');
+  const col=(d!=null&&d<=7)?'var(--green)':'var(--orange)';
+  return '<div class="card"><div class="card-title">数据备份 <span class="pill">全量 · 不上传</span></div>'+
+    '<div class="kv"><span>上次备份</span><b class="mono" style="color:'+col+'">'+state+'</b></div>'+
+    '<div class="kv"><span>本机记录</span><b class="mono">'+S.body.length+' 体测 · '+S.meals.length+' 饮食 · '+S.train.length+' 训练</b></div>'+
+    '<div class="btnrow" style="margin-top:10px"><button class="btn pri sm" onclick="exportBackup()">导出备份</button>'+
+    '<button class="btn sm" onclick="$id(\'importFile\').click()">导入 / 恢复</button></div>'+
+    '<div class="note" style="margin-top:8px">导出的 JSON 发我，我就能读数据做分析。换设备、清缓存前记得导一次。</div></div>';
 }
 function weekTrainCount(){
   const t=localTodayStr(),dow=new Date().getDay()||7,monday=addDays(t,-dow+1),sunday=addDays(monday,6);
-  return S.train.filter(function(r){return r.date>=monday&&r.date<=sunday&&r.plan;}).length;
+  return S.train.filter(function(r){return inView(r.date)&&r.date>=monday&&r.date<=sunday&&r.plan;}).length;
 }
 
 /* ===================== 渲染：训练 ===================== */
@@ -1150,9 +1172,9 @@ function renderTrain(){
      '<input type="text" class="inp" id="trainNote" placeholder="随手记（可空）例：引体 1/2 行程连拉 4 个" style="margin-top:10px">'+
      '<div class="btnrow" style="margin-top:10px"><button class="btn pri sm" onclick="markTrain(\''+p.key+'\')">完成 '+esc(p.label.split(' · ')[0])+'</button></div>'+
      '<div class="hr"></div><div class="kv"><span>本周正式组</span><b class="mono">'+weekTrainCount()+' / 3</b></div></div>';
-  const hist=S.train.slice().sort(function(a,b){return b.date.localeCompare(a.date);}).slice(0,12);
+  const hist=viewTrain().slice().sort(function(a,b){return b.date.localeCompare(a.date);}).slice(0,12);
   h+='<div class="card"><div class="card-title">最近完成</div>';
-  if(!hist.length)h+='<div class="note">阶段一的训练记录导入后会出现在下面。</div>';
+  if(!hist.length)h+='<div class="note">本阶段还没有完成记录。</div>';
   hist.forEach(function(r){
     const pn=(PLAN.find(function(x){return x.key===r.plan;})||{}).label||r.plan||r.type||'训练';
     h+='<div class="kv"><span>'+r.date+' · '+esc(pn)+'</span><span class="sub">'+esc(r.note||'')+'</span></div>';
@@ -1183,7 +1205,7 @@ function markKgl(){S.kgl=localTodayStr();save();renderAll();toast('已记下');}
 function weekMonday(d){const dt=new Date(d+'T00:00:00');const dow=dt.getDay()||7;return addDays(d,-dow+1);}
 function mealWeeks(){
   const map={};
-  S.meals.forEach(function(r){
+  viewMeals().forEach(function(r){
     const cal=n2(r.cal);if(cal==null)return;
     const k=weekMonday(r.date);
     if(!map[k])map[k]={start:k,days:0,cal:0,p:0,carb:0,pDays:0,cDays:0};
@@ -1196,9 +1218,9 @@ function mealWeeks(){
 }
 function weekList(){
   const map=mealWeeks(),keys=Object.keys(map);
-  if(!keys.length)return [];
-  const first=keys.slice().sort()[0];let cur=weekMonday(localTodayStr());const out=[];
-  while(cur>=first&&out.length<26){out.push(map[cur]||{start:cur,days:0,cal:0,p:0,carb:0,pDays:0,cDays:0});cur=addDays(cur,-7);}
+  const floor=weekMonday(viewFrom());let cur=weekMonday(localTodayStr());const out=[];
+  const start=keys.length?floor:cur;
+  while(cur>=start&&out.length<26){out.push(map[cur]||{start:cur,days:0,cal:0,p:0,carb:0,pDays:0,cDays:0});cur=addDays(cur,-7);}
   return out;
 }
 function weekAvg(o){return o&&o.days?o.cal/o.days:null;}
@@ -1230,8 +1252,8 @@ function renderDiet(){
     '<div class="note" style="margin-top:4px">按日均比，周中也能看；只算有记录的日子。</div>':'')+'</div>';
 
   const mx=Math.max.apply(null,wks.map(function(o){return weekAvg(o)||0;}).concat([1]));
-  h+='<div class="card"><div class="card-title">每周汇总 · 一周一行</div>';
-  if(!wks.length)h+='<div class="note">导入阶段一数据后，这里会按周排好。</div>';
+  h+='<div class="card"><div class="card-title">每周汇总 · 一周一行 <span class="pill">'+md(viewFrom())+' 起</span></div>';
+  if(!wks.length)h+='<div class="note">本阶段还没有热量记录，记一条就开始按周汇总。</div>';
   wks.forEach(function(o,i){
     const av=weekAvg(o),pvv=i+1<wks.length?weekAvg(wks[i+1]):null;
     const dd=(av!=null&&pvv!=null)?av-pvv:null;
@@ -1311,8 +1333,8 @@ function renderBody(){
   f+='</div>';h+=f;
 
   /* 记录列表 + 导入导出 */
-  h+='<div class="card"><div class="card-title">记录 <span class="pill">'+S.body.length+' 条</span></div>'+
-     '<div class="btnrow"><button class="btn sm" onclick="$id(\'importFile\').click()">导入阶段一数据</button>'+
+  h+='<div class="card"><div class="card-title">记录 · 本阶段 <span class="pill">'+pool.length+' 条</span></div>'+
+     '<div class="btnrow"><button class="btn sm" onclick="$id(\'importFile\').click()">导入数据 / 恢复备份</button>'+
      '<button class="btn sm" onclick="exportBackup()">导出备份</button></div>'+
      '<div class="note" style="margin-top:8px">所有数据只存在这台设备的浏览器里，不上传。换设备或清缓存前记得导出。</div><div class="hr"></div>';
   pool.slice().reverse().slice(0,12).forEach(function(r){
@@ -1361,10 +1383,12 @@ function saveBodyForm(){
   save();renderAll();toast('已记录 '+md(d));
 }
 function exportBackup(){
-  const blob=new Blob([JSON.stringify(S,null,1)],{type:'application/json'});
+  const out=Object.assign({},S,{type:'wb2_backup',exportedAt:new Date().toISOString(),lastBackup:localTodayStr()});
+  const blob=new Blob([JSON.stringify(out,null,1)],{type:'application/json'});
   const a=document.createElement('a');a.href=URL.createObjectURL(blob);
   a.download='wb2_backup_'+localTodayStr().replace(/-/g,'')+'.json';document.body.appendChild(a);a.click();
-  setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},1200);toast('备份已导出');
+  setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},1200);
+  S.lastBackup=localTodayStr();save();renderToday();toast('备份已导出 · 文件在下载目录');
 }
 function doImport(e){
   const f=e.target.files&&e.target.files[0];if(!f)return;
